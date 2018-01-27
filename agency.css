@@ -58,7 +58,7 @@ section h3.section-subheading {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   border-radius: 0 5px 0 5px;
-  text-shadow: 0 0 1px black;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 .btn-xl {
@@ -112,6 +112,7 @@ img::-moz-selection {
   color: #149C88;
   border: 0;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 #mainNav .navbar-toggler:hover, #mainNav .navbar-toggler:focus, #mainNav .navbar-toggler:active {
@@ -120,7 +121,7 @@ img::-moz-selection {
 
 #mainNav .navbar-brand {
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
-  text-shadow: 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 #mainNav .navbar-brand .brand-first {
@@ -153,6 +154,7 @@ img::-moz-selection {
   letter-spacing: 1px;
   color: #149C88;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -213,6 +215,7 @@ header.masthead .intro-text .intro-lead-in {
   line-height: 22px;
   margin-bottom: 25px;
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 header.masthead .intro-text .intro-heading {
@@ -221,6 +224,7 @@ header.masthead .intro-text .intro-heading {
   line-height: 50px;
   margin-bottom: 25px;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 @media (min-width: 768px) {
@@ -710,20 +714,20 @@ ul.social-buttons {
 }
 
 ul.social-buttons li a {
-  font-size: 20px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 50px;
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   color: white;
   border-radius: 100%;
   outline: none;
-  background-color: #212529;
+  background-color: #149C88;
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #149C88;
+  background-color: #054F45;
 }
