@@ -8,15 +8,15 @@ p {
 }
 
 a {
-  color: #fed136;
+  color: #149C88;
 }
 
 a:hover {
-  color: #fec503;
+  color: #054F45;
 }
 
 .text-primary {
-  color: #fed136 !important;
+  color: #149C88 !important;
 }
 
 h1,
@@ -65,27 +65,27 @@ section h3.section-subheading {
 }
 
 .btn-primary {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: #149C88;
+  border-color: #149C88;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #fec810 !important;
-  border-color: #fec810 !important;
+  background-color: #054F45 !important;
+  border-color: #054F45 !important;
   color: white;
 }
 
 .btn-primary:active, .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem rgba(20, 156, 136, 0.5) !important;
 }
 
 ::-moz-selection {
-  background: #fed136;
+  background: #149C88;
   text-shadow: none;
 }
 
 ::selection {
-  background: #fed136;
+  background: #149C88;
   text-shadow: none;
 }
 
@@ -108,17 +108,25 @@ img::-moz-selection {
   text-transform: uppercase;
   color: white;
   border: 0;
-  background-color: #fed136;
+  background-color: #149C88;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #mainNav .navbar-brand {
-  color: #fed136;
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
+  text-shadow: 0 0 0px #111, 1px 1px 0px #111, 2px 2px 0px #111;
+}
+
+#mainNav .navbar-brand .brand-first {
+  color: #054F45;
+}
+
+#mainNav .navbar-brand .brand-second {
+  color: #149C88;
 }
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #fec503;
+  color: #054F45;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -131,7 +139,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #fed136;
+  color: #149C88;
 }
 
 @media (min-width: 992px) {
@@ -245,7 +253,7 @@ header.masthead .intro-text .intro-heading {
   -moz-transition: all ease 0.5s;
   transition: all ease 0.5s;
   opacity: 0;
-  background: rgba(254, 209, 54, 0.9);
+  background: rgba(20, 156, 136, 0.9);
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
@@ -449,7 +457,7 @@ header.masthead .intro-text .intro-heading {
   color: white;
   border: 7px solid #e9ecef;
   border-radius: 100%;
-  background-color: #fed136;
+  background-color: #149C88;
 }
 
 .timeline > li .timeline-image h4 {
@@ -620,7 +628,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-  border-color: #fed136;
+  border-color: #149C88;
   box-shadow: none;
 }
 
@@ -690,5 +698,5 @@ ul.social-buttons li a {
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #fed136;
+  background-color: #149C88;
 }
