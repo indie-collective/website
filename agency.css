@@ -102,27 +102,41 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-toggler {
-  font-size: 12px;
+  transition: color ease-in-out .2s;
+  font-size: 30px;
   right: 0;
   padding: 13px;
   text-transform: uppercase;
-  color: white;
+  color: #149C88;
   border: 0;
-  background-color: #149C88;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#mainNav .navbar-toggler:hover, #mainNav .navbar-toggler:focus, #mainNav .navbar-toggler:active {
+  color: #054F45;
 }
 
 #mainNav .navbar-brand {
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
-  text-shadow: 0 0 0px #111, 1px 1px 0px #111, 2px 2px 0px #111;
+  text-shadow: 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111;
 }
 
 #mainNav .navbar-brand .brand-first {
+  transition: color ease-in-out .2s;
   color: #054F45;
 }
 
 #mainNav .navbar-brand .brand-second {
+  transition: color ease-in-out .2s;
   color: #149C88;
+}
+
+#mainNav .navbar-brand:hover .brand-first {
+  color: #149C88;
+}
+
+#mainNav .navbar-brand:hover .brand-second {
+  color: #054F45;
 }
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
@@ -130,16 +144,17 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
+  transition: color ease-in-out .2s;
   font-size: 90%;
   font-weight: 400;
   padding: 0.75em 0;
   letter-spacing: 1px;
-  color: white;
+  color: #149C88;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #149C88;
+  color: #054F45;
 }
 
 @media (min-width: 992px) {
