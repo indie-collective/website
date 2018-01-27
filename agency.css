@@ -601,9 +601,17 @@ header.masthead .intro-text .intro-heading {
 }
 
 .team-member img {
-  width: 225px;
-  height: 225px;
+  width: 20vw;
+  height: 20vw;
   border: 7px solid #fff;
+}
+
+
+@media (max-width: 575px) {
+  img.team-image {
+    width: 50vw;
+    height: 50vw;
+  }
 }
 
 .team-member h4 {
