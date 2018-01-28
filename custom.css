@@ -315,6 +315,10 @@ header.masthead .intro-text .intro-heading {
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+#team {
+  padding: 50px 0;
+}
+
 #portfolio * {
   z-index: 2;
 }
