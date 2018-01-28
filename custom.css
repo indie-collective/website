@@ -593,19 +593,21 @@ header.masthead .intro-text .intro-heading {
   }
 }
 
-.team-member {
+.team-member, .media-card {
   margin-bottom: 50px;
   text-align: center;
 }
 
-.team-member img {
+.team-member img, .media-card img {
   width: 20vw;
   height: 20vw;
-  border: 7px solid #fff;
   max-width: 250px;
   max-height: 250px;
 }
 
+.team-member {
+  border: 7px solid #fff;
+}
 
 @media (max-width: 575px) {
   img.team-image {
