@@ -1,3 +1,10 @@
+* {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
 body {
   overflow-x: hidden;
   font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -30,7 +37,7 @@ h6 {
 }
 
 section {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 section h2.section-heading {
@@ -46,6 +53,19 @@ section h3.section-subheading {
   margin-bottom: 75px;
   text-transform: none;
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+@media (max-width: 575px) {
+  section h3.section-subheading {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  section {
+    padding: 50px 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -120,6 +140,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-brand {
+  hyphens: none;
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
   text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
@@ -219,7 +240,7 @@ header.masthead .intro-text .intro-lead-in {
 }
 
 header.masthead .intro-text .intro-heading {
-  font-size: 50px;
+  font-size: 45px;
   font-weight: 700;
   line-height: 50px;
   margin-bottom: 25px;
@@ -341,7 +362,7 @@ header.masthead .intro-text .intro-heading {
 }
 
 .portfolio-modal .modal-content {
-  padding: 100px 0;
+  padding: 80px 0 0;
   text-align: center;
 }
 
