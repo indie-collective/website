@@ -78,7 +78,6 @@ section h3.section-subheading {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   border-radius: 0 5px 0 5px;
-  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
 
 .btn-xl {
@@ -136,7 +135,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-toggler:hover, #mainNav .navbar-toggler:focus, #mainNav .navbar-toggler:active {
-  color: #054F45;
+  color: #067E73;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -151,7 +150,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #054F45;
+  color: #067E73;
 }
 
 @media (min-width: 992px) {
@@ -170,6 +169,10 @@ img::-moz-selection {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
   }
+
+  #mainNav .navbar-brand:hover {
+    transform: scale(1.1);
+  }
   #mainNav .navbar-nav .nav-item .nav-link {
     padding: 1.1em 1em !important;
   }
@@ -187,7 +190,8 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url("img/header-bg.jpg");
+  background: #0C0923;
+  background-image: url("img/other/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -208,7 +212,7 @@ header.masthead .intro-text .intro-lead-in {
   line-height: 22px;
   margin-bottom: 25px;
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
+  text-shadow: 1px 1px 5px #111;
 }
 
 header.masthead .intro-text .intro-heading {
@@ -218,7 +222,7 @@ header.masthead .intro-text .intro-heading {
   line-height: 50px;
   margin-bottom: 25px;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
+  text-shadow: 5px 5px 10px #111;
 }
 
 @media (min-width: 768px) {
@@ -268,7 +272,7 @@ header.masthead .intro-text .intro-heading {
   -moz-transition: all ease 0.5s;
   transition: all ease 0.5s;
   opacity: 0;
-  background: rgba(20, 156, 136, 0.9);
+  background: rgba(20, 156, 136, 0.5);
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
@@ -632,7 +636,7 @@ header.masthead .intro-text .intro-heading {
 
 section#contact {
   background-color: #212529;
-  background-image: url("img/map-image.png");
+  background-image: url("img/other/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }
