@@ -7,7 +7,7 @@
 
 body {
   overflow-x: hidden;
-  font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Muli', 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 p {
@@ -52,7 +52,7 @@ section h3.section-subheading {
   font-style: italic;
   margin-bottom: 75px;
   text-transform: none;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 
@@ -211,7 +211,7 @@ header.masthead .intro-text .intro-lead-in {
   font-style: italic;
   line-height: 22px;
   margin-bottom: 25px;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-shadow: 1px 1px 5px #111;
 }
 
@@ -235,7 +235,7 @@ header.masthead .intro-text .intro-heading {
     font-style: italic;
     line-height: 40px;
     margin-bottom: 25px;
-    font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   header.masthead .intro-text .intro-heading {
     font-size: 75px;
@@ -316,7 +316,7 @@ header.masthead .intro-text .intro-heading {
   font-size: 16px;
   font-style: italic;
   margin: 0;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #team {
@@ -334,7 +334,7 @@ header.masthead .intro-text .intro-heading {
 }
 
 .portfolio-modal {
-  padding-right: 0px !important;
+    padding-right: 0 !important;
 }
 
 .portfolio-modal .modal-dialog {
@@ -360,7 +360,7 @@ header.masthead .intro-text .intro-heading {
   font-size: 16px;
   font-style: italic;
   margin: 20px 0 30px;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .portfolio-modal .modal-content ul.list-inline {
