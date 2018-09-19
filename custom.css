@@ -55,7 +55,6 @@ section h3.section-subheading {
     font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-
 @media (max-width: 575px) {
   section h3.section-subheading {
     margin-bottom: 20px;
@@ -632,6 +631,16 @@ header.masthead .intro-text .intro-heading {
 
 .team-member p {
   margin-top: 0;
+}
+
+#haWidget {
+  height: 600px;
+}
+
+@media (max-width: 1200px) {
+  #haWidget {
+    height: 650px;
+  }
 }
 
 section#contact {
