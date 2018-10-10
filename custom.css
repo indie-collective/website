@@ -140,10 +140,10 @@ img::-moz-selection {
 #mainNav .navbar-nav .nav-item .nav-link {
   transition: color ease-in-out .2s;
   font-size: 90%;
-  font-weight: 400;
+  font-weight: 700;
   padding: 0.75em 0;
   letter-spacing: 1px;
-  color: #149C88;
+  color: #14b39f;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-shadow: -1px -1px 0 #111, 0 0 0 #111, 1px 1px 0 #111, 2px 2px 0 #111, 3px 3px 0 #111;
 }
