@@ -250,11 +250,6 @@ header.masthead .intro-text .intro-heading {
   text-transform: none;
 }
 
-#portfolio .portfolio-item {
-  right: 0;
-  margin: 0 0 15px;
-}
-
 #portfolio .portfolio-item .portfolio-link {
   position: relative;
   display: block;
@@ -324,12 +319,6 @@ header.masthead .intro-text .intro-heading {
 
 #portfolio * {
   z-index: 2;
-}
-
-@media (min-width: 767px) {
-  #portfolio .portfolio-item {
-    margin: 0 0 30px;
-  }
 }
 
 .portfolio-modal {
