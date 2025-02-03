@@ -653,6 +653,11 @@ header.masthead .intro-text .intro-heading {
   margin-top: 0;
 }
 
+.lastname {
+  display: block;
+  text-transform: uppercase;
+}
+
 #haWidget {
   height: 700px;
 }
