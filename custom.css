@@ -691,6 +691,12 @@ header.masthead .intro-text .intro-heading {
   text-transform: uppercase;
 }
 
+.media-card.white {
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 0 -5px;
+}
+
 #haWidget {
   height: 700px;
 }
