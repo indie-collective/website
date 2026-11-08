@@ -1,0 +1,77 @@
+/*
+ * Design tokens, shared with Community (community.indieco.xyz).
+ * The values mirror app/theme.js in indie-collective/community: keep them in
+ * step so both sites read as one family.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* Paper and ink with a green bias from the logo. */
+  --canvas: #f3f6f2;
+  --surface: #ffffff;
+  --ink: #10201d;
+  --muted: #4f625d;
+  --rule: #cdd8d3;
+
+  /* The logo's C and I. */
+  --brand: #149c88;
+  --brand-deep: #054f45;
+
+  /* Primary fill: a step darker than the logo green, for 5:1 with white. */
+  --primary: #0f7d6d;
+  --primary-contrast: #ffffff;
+  --primary-subtle: #e3f2ee;
+  --primary-muted: #cfe8e2;
+
+  /* State only: sun for what's highlighted, coral for "today", lilac for online. */
+  --sun: #ffd23f;
+  --coral: #ff6b5b;
+  --lilac: #b9a7ff;
+  --on-pop: #10201d;
+
+  --shadow-raised: 0 1px 2px rgba(16, 32, 29, 0.06), 0 1px 1px rgba(16, 32, 29, 0.04);
+  --shadow-raised-hover: 0 2px 4px rgba(16, 32, 29, 0.08), 0 4px 10px -4px rgba(16, 32, 29, 0.12);
+  --shadow-lift: 0 1px 0 rgba(16, 32, 29, 0.08), 0 10px 24px -12px rgba(16, 32, 29, 0.35);
+
+  --radius-label: 6px;
+  --radius-control: 10px;
+  --radius-card: 14px;
+  --radius-panel: 20px;
+
+  --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 112px;
+
+  --content: 1120px;
+  --gutter: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #0d1715;
+    --surface: #15221f;
+    --ink: #e8f1ee;
+    --muted: #9db2ac;
+    --rule: #2a3c38;
+    --brand: #2cc4ac;
+    --brand-deep: #8fe3d4;
+    --primary: #2cc4ac;
+    --primary-contrast: #0d1715;
+    --primary-subtle: #102e29;
+    --primary-muted: #16423b;
+    --coral: #ff8475;
+    --lilac: #c4b5ff;
+    --shadow-raised: 0 1px 0 rgba(0, 0, 0, 0.4);
+    --shadow-raised-hover: 0 1px 0 rgba(0, 0, 0, 0.4), 0 6px 16px -8px rgba(0, 0, 0, 0.7);
+    --shadow-lift: 0 1px 0 rgba(0, 0, 0, 0.4), 0 12px 28px -14px rgba(0, 0, 0, 0.8);
+  }
+}

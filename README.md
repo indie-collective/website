@@ -17,3 +17,31 @@
     <img alt="Discord" src="https://img.shields.io/discord/84687138729259008?label=discord">
   </p>
 </div>
+
+## Working on the site
+
+The site is a static [Astro](https://astro.build) site, deployed to GitHub Pages. It needs Node 24 (see `.nvmrc`).
+
+```sh
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # into dist/
+```
+
+### Where things are
+
+- `src/i18n/`: the interface text, one file per language. French (`fr.ts`) is the source: anything missing from `en.ts` or `br.ts` shows in French. `npm run i18n:missing` lists what Breton still lacks.
+- `src/data/`: projects, team and links. Long texts carry their own translations, with French as the fallback.
+- `src/components/`: one component per section of the page.
+- `src/styles/tokens.css`: colours, type and radii, shared with [Community](https://community.indieco.xyz) (`app/theme.js` in indie-collective/community). Change both together.
+- `src/assets/`: photos, resized by Astro at build time. `public/`: files served as-is (logos, documents' icons, `CNAME`).
+
+### The agenda comes from Community
+
+Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. The site is rebuilt every morning (`.github/workflows/deploy.yml`), or on demand from the Actions tab.
+
+Each project's past editions (`editions` in `src/data/projects.ts`) link to their pages on Community; add the new one each year.
+
+### Deploying
+
+Every push to `master` builds and deploys through GitHub Actions. In the repository's settings, Pages must use **GitHub Actions** as its source.

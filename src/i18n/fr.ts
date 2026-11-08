@@ -1,0 +1,123 @@
+export default {
+  meta: {
+    title: 'Indie Collective · Communauté de création de jeux vidéo à Rennes',
+    description:
+      "Moteur de la communauté de jeux indépendants autour de Rennes : coordination de game jams, organisation de la zone « Jeux Indépendants » du Stunfest et Community, l'annuaire ouvert du jeu indé.",
+  },
+  nav: {
+    skip: 'Aller au contenu',
+    association: "L'asso",
+    agenda: 'Agenda',
+    projects: 'Projets',
+    team: "L'équipe",
+    resources: 'Ressources',
+    join: 'Adhérer',
+    language: 'Langue',
+    menu: 'Menu',
+  },
+  hero: {
+    kicker: 'Indie Games & Jams · Rennes',
+    title: 'On fait vivre le jeu indé à Rennes.',
+    lead: "Indie Collective est l'association qui organise les game jams rennaises, co-organise la zone Indie du Stunfest et tient Community, l'annuaire ouvert du jeu indépendant.",
+    join: "Adhérer à l'asso",
+    discord: 'Rejoindre le Discord',
+    photo: 'La zone Indie du Stunfest, vue d’en haut',
+  },
+  missions: {
+    title: "L'association",
+    lead: 'Faire carburer la communauté avec trois missions.',
+    items: {
+      stunfest: {
+        title: 'Stunfest',
+        text: "Un des plus grands évènements de l'année pour l'accueil et la présentation au public de jeux indépendants.",
+      },
+      jams: {
+        title: 'Jams',
+        text: 'Des défis de création de jeu en équipe avec une limite de temps et un thème donné.',
+      },
+      community: {
+        title: 'Community',
+        text: 'Des outils pour mieux localiser les acteurs et comprendre la communauté du jeu indépendant.',
+      },
+    },
+  },
+  agenda: {
+    title: 'Prochains rendez-vous',
+    lead: "Les prochains évènements de l'association, tirés de Community.",
+    subscribe: "S'abonner au calendrier",
+    all: 'Tout voir sur Community',
+    empty: "Pas d'évènement annoncé pour l'instant. Abonnez-vous au calendrier pour ne pas rater le prochain.",
+    unavailable: "L'agenda n'a pas pu être chargé. Retrouvez nos évènements sur Community.",
+    online: 'En ligne',
+    canceled: 'Annulé',
+    details: 'Détails',
+  },
+  projects: {
+    title: 'Nos projets',
+    lead: "Les évènements et projets que l'association organise ou co-organise.",
+    more: 'En savoir plus',
+    close: 'Fermer',
+    editionCount: '{n} éditions',
+    editions: 'Éditions sur Community',
+    allJams: 'Toutes nos jams sur Community',
+  },
+  community: {
+    kicker: 'Notre outil',
+    title: "Community, l'annuaire ouvert du jeu indé",
+    lead: "Jeux, studios, associations et évènements du monde entier, dans une base de données ouverte que tout le monde peut enrichir. C'est aussi là que vit notre agenda.",
+    cta: 'Ouvrir Community',
+    links: {
+      games: 'Jeux',
+      studios: 'Studios',
+      events: 'Évènements',
+      atlas: 'Atlas',
+      org: 'Notre page',
+    },
+  },
+  team: {
+    title: "L'équipe",
+    lead: 'Une équipe de winners prête à vous faire vibrer sous le signe des jeux vidéo.',
+    groups: {
+      bureau: 'Bureau',
+      ca: "Conseil d'administration",
+      members: 'Membres actifs',
+    },
+    photoOf: 'Photo de',
+  },
+  resources: {
+    title: 'Médias & ressources',
+    lead: 'Pour pouvoir mettre en avant notre belle association.',
+    docs: 'Documents',
+    logos: 'Logos',
+    items: {
+      jammerGuide: 'Guide de survie du jammer',
+      stunfestGuide: "Guide de survie de l'indé au Stunfest",
+      statutes: 'Statuts',
+      minutes: "PV de l'assemblée constitutive",
+      rules: 'Règlement intérieur',
+    },
+    logoNames: {
+      mark: 'Logo',
+      text: 'Logo avec nom',
+      markWhite: 'Logo blanc',
+      textWhite: 'Logo blanc avec nom',
+    },
+    docLang: '',
+  },
+  join: {
+    title: "Adhérez à l'asso",
+    lead: "L'adhésion soutient les jams et l'accueil des indés au Stunfest. Elle se fait en ligne via HelloAsso.",
+    widgetTitle: "Formulaire d'adhésion HelloAsso",
+    contact: 'Contactez-nous',
+    discord: 'Rejoignez-nous sur Discord',
+    newsletter: 'Newsletter annuelle',
+    email: 'Écrire un e-mail',
+  },
+  footer: {
+    rights: 'Indie Collective, association loi 1901, Rennes.',
+    source: 'Code source',
+  },
+  date: {
+    locale: 'fr-FR',
+  },
+};

@@ -1,0 +1,76 @@
+---
+// Brand marks from simple-icons, and a few line icons for the interface.
+import {
+  siBluesky,
+  siDiscord,
+  siFacebook,
+  siGithub,
+  siInstagram,
+  siThreads,
+  siTiktok,
+  siTwitch,
+  siX,
+  siYoutube,
+} from 'simple-icons';
+
+const brands = {
+  bluesky: siBluesky,
+  discord: siDiscord,
+  facebook: siFacebook,
+  github: siGithub,
+  instagram: siInstagram,
+  threads: siThreads,
+  tiktok: siTiktok,
+  twitch: siTwitch,
+  x: siX,
+  youtube: siYoutube,
+};
+
+// 24×24, stroked.
+const lines = {
+  arrow: 'M5 12h14M13 6l6 6-6 6',
+  calendar: 'M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z',
+  mail: 'M4 6h16v12H4zM4 7l8 6 8-6',
+  close: 'M6 6l12 12M18 6L6 18',
+  pin: 'M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  menu: 'M4 7h16M4 12h16M4 17h16',
+  download: 'M12 4v11M7 10l5 5 5-5M5 20h14',
+  doc: 'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6',
+};
+
+export type IconName = keyof typeof brands | keyof typeof lines;
+
+interface Props {
+  name: IconName;
+  size?: number;
+  label?: string;
+  class?: string;
+}
+
+const { name, size = 20, label, class: className } = Astro.props;
+const brand = brands[name as keyof typeof brands];
+const a11y = label ? ({ role: 'img', 'aria-label': label } as const) : ({ 'aria-hidden': 'true' } as const);
+---
+
+{
+  brand ? (
+    <svg class={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...a11y}>
+      <path d={brand.path} />
+    </svg>
+  ) : (
+    <svg
+      class={className}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      {...a11y}
+    >
+      <path d={lines[name as keyof typeof lines]} />
+    </svg>
+  )
+}

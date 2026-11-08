@@ -1,0 +1,94 @@
+---
+import { dictionaries, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const t = dictionaries[Astro.props.lang];
+const items = [
+  { key: 'stunfest', href: '#project-stunfest' },
+  { key: 'jams', href: '#agenda' },
+  { key: 'community', href: '#community' },
+] as const;
+---
+
+<section id="association" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>{t.missions.title}</h2>
+        <p>{t.missions.lead}</p>
+      </div>
+    </div>
+    <ol class="missions">
+      {
+        items.map(({ key, href }, index) => (
+          <li>
+            <a href={href}>
+              <span class="n" aria-hidden="true">{index + 1}</span>
+              <h3>{t.missions.items[key].title}</h3>
+              <p>{t.missions.items[key].text}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .missions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .missions a {
+    display: block;
+    height: 100%;
+    padding: var(--space-5);
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+
+  .missions a:hover {
+    box-shadow: var(--shadow-raised-hover);
+    transform: translateY(-2px);
+  }
+
+  .n {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-muted);
+    color: var(--brand-deep);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  h3 {
+    margin-top: var(--space-4);
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-top: var(--space-2);
+    color: var(--muted);
+  }
+
+  @media (max-width: 760px) {
+    .missions {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

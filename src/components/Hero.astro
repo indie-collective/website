@@ -1,0 +1,121 @@
+---
+import { dictionaries, type Lang } from '../i18n';
+import { DISCORD } from '../data/links';
+import { Image } from 'astro:assets';
+import { asset } from '../lib/images';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const t = dictionaries[Astro.props.lang];
+---
+
+<section class="hero">
+  <div class="wrap grid">
+    <div class="copy">
+      <p class="kicker">{t.hero.kicker}</p>
+      <h1>{t.hero.title}</h1>
+      <p class="lead">{t.hero.lead}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#adherer">{t.hero.join}<Icon name="arrow" /></a>
+        <a class="btn btn-secondary" href={DISCORD} target="_blank" rel="noopener"><Icon name="discord" />{t.hero.discord}</a>
+      </div>
+    </div>
+    <figure class="photo">
+      <Image
+        src={asset('portfolio/stunfest-indie-full.jpg')}
+        alt={t.hero.photo}
+        width={1300}
+        widths={[600, 900, 1300]}
+        sizes="(max-width: 860px) 100vw, 600px"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption class="sticker">Stunfest · Zone Indie</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .kicker {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brand-deep);
+    margin-bottom: var(--space-4);
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4rem);
+    letter-spacing: -0.025em;
+  }
+
+  .lead {
+    margin-top: var(--space-5);
+    font-size: 1.125rem;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .photo {
+    position: relative;
+    margin: 0;
+  }
+
+  .photo :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .sticker {
+    position: absolute;
+    left: -14px;
+    bottom: 24px;
+    transform: rotate(-4deg);
+    background: var(--sun);
+    color: var(--on-pop);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    border-radius: var(--radius-control);
+    box-shadow: var(--shadow-lift);
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      padding-block: var(--space-5) var(--space-7);
+    }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .sticker {
+      left: 12px;
+      bottom: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,127 @@
+import type { Dictionary } from './index';
+
+const en: Dictionary = {
+  meta: {
+    title: 'Indie Collective · Indie game community in Rennes, France',
+    description:
+      "Driving the indie game community around Rennes: game jams, the Indie zone at Stunfest, and Community, the open directory of indie games.",
+  },
+  nav: {
+    skip: 'Skip to content',
+    association: 'About',
+    agenda: 'Events',
+    projects: 'Projects',
+    team: 'Team',
+    resources: 'Resources',
+    join: 'Join',
+    language: 'Language',
+    menu: 'Menu',
+  },
+  hero: {
+    kicker: 'Indie Games & Jams · Rennes',
+    title: 'Keeping indie games alive in Rennes.',
+    lead: "Indie Collective is the association behind Rennes' game jams. We co-organise the Indie zone at Stunfest and run Community, the open directory of indie games.",
+    join: 'Become a member',
+    discord: 'Join the Discord',
+    photo: 'The Indie zone at Stunfest, seen from above',
+  },
+  missions: {
+    title: 'The association',
+    lead: 'Fuelling the community with three missions.',
+    items: {
+      stunfest: {
+        title: 'Stunfest',
+        text: 'One of the biggest events of the year for welcoming indie games and showing them to the public.',
+      },
+      jams: {
+        title: 'Jams',
+        text: 'Team game-making challenges against the clock, on a given theme.',
+      },
+      community: {
+        title: 'Community',
+        text: 'Tools to find who is who and understand the indie game community.',
+      },
+    },
+  },
+  agenda: {
+    title: 'Upcoming events',
+    lead: "The association's next events, straight from Community.",
+    subscribe: 'Subscribe to the calendar',
+    all: 'See all on Community',
+    empty: 'Nothing announced yet. Subscribe to the calendar so you don’t miss the next one.',
+    unavailable: "The calendar couldn't be loaded. Find our events on Community.",
+    online: 'Online',
+    canceled: 'Canceled',
+    details: 'Details',
+  },
+  projects: {
+    title: 'Our projects',
+    lead: 'The events and projects the association runs or co-runs.',
+    more: 'Read more',
+    close: 'Close',
+    editionCount: '{n} editions',
+    editions: 'Editions on Community',
+    allJams: 'All our jams on Community',
+  },
+  community: {
+    kicker: 'Our tool',
+    title: 'Community, the open directory of indie games',
+    lead: 'Games, studios, associations and events from around the world, in an open database anyone can add to. It is also where our calendar lives.',
+    cta: 'Open Community',
+    links: {
+      games: 'Games',
+      studios: 'Studios',
+      events: 'Events',
+      atlas: 'Atlas',
+      org: 'Our page',
+    },
+  },
+  team: {
+    title: 'The team',
+    lead: 'A team of winners, here to make you vibrate to the sound of video games.',
+    groups: {
+      bureau: 'Board',
+      ca: 'Council',
+      members: 'Active members',
+    },
+    photoOf: 'Photo of',
+  },
+  resources: {
+    title: 'Media & resources',
+    lead: 'Everything you need to talk about the association.',
+    docs: 'Documents',
+    logos: 'Logos',
+    items: {
+      jammerGuide: "The jammer's survival guide",
+      stunfestGuide: "The indie exhibitor's survival guide to Stunfest",
+      statutes: 'Statutes',
+      minutes: 'Minutes of the founding assembly',
+      rules: 'Internal rules',
+    },
+    logoNames: {
+      mark: 'Logo',
+      text: 'Logo with name',
+      markWhite: 'White logo',
+      textWhite: 'White logo with name',
+    },
+    docLang: 'In French',
+  },
+  join: {
+    title: 'Join the association',
+    lead: 'Membership supports the jams and the welcome for indie developers at Stunfest. Join online through HelloAsso.',
+    widgetTitle: 'HelloAsso membership form',
+    contact: 'Get in touch',
+    discord: 'Join us on Discord',
+    newsletter: 'Yearly newsletter (in French)',
+    email: 'Send an email',
+  },
+  footer: {
+    rights: 'Indie Collective, a French non-profit association, Rennes.',
+    source: 'Source code',
+  },
+  date: {
+    locale: 'en-GB',
+  },
+};
+
+export default en;

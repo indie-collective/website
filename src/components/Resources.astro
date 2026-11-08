@@ -1,0 +1,190 @@
+---
+import { dictionaries, type Lang } from '../i18n';
+import { documents, logos } from '../data/links';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+// The SVGs with the name use a font they don't embed: preview the PNG.
+const preview = (files: readonly (readonly [string, string])[]) =>
+  (files.find(([, file]) => file.endsWith('_500.png')) ?? files[0])[1];
+---
+
+<section id="ressources" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>{t.resources.title}</h2>
+        <p>{t.resources.lead}</p>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3>{t.resources.docs}</h3>
+        <ul class="docs">
+          {
+            documents.map((doc) => (
+              <li>
+                <a href={doc.href} target="_blank" rel="noopener">
+                  <img src={doc.icon} alt="" width="28" height="28" />
+                  <span>{t.resources.items[doc.key]}</span>
+                  {t.resources.docLang && <span class="lang">{t.resources.docLang}</span>}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3>{t.resources.logos}</h3>
+        <ul class="logos">
+          {
+            logos.map((logo) => (
+              <li>
+                <div class:list={['preview', { dark: logo.dark }]}>
+                  <img src={`/img/logos/${preview(logo.files)}`} alt={t.resources.logoNames[logo.key]} loading="lazy" />
+                </div>
+                <div class="files">
+                  {logo.files.map(([label, file]) => (
+                    <a href={`/img/logos/${file}`} download={file}>
+                      <Icon name="download" size={14} />
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: var(--space-7);
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .docs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .docs li + li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .docs a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 14px var(--space-4);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .docs a:hover span:first-of-type {
+    color: var(--brand-deep);
+    text-decoration: underline;
+  }
+
+  .docs img {
+    flex: none;
+  }
+
+  .lang {
+    margin-inline-start: auto;
+    padding: 1px 6px;
+    border-radius: var(--radius-label);
+    background: var(--canvas);
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .logos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .logos li {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    overflow: hidden;
+  }
+
+  .preview {
+    display: grid;
+    place-items: center;
+    height: 140px;
+    padding: var(--space-4);
+    background: #ffffff;
+  }
+
+  .preview.dark {
+    background: #0d1715;
+  }
+
+  .preview img {
+    max-height: 100%;
+    max-width: 70%;
+  }
+
+  .files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.85rem;
+  }
+
+  .files a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .files a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 860px) {
+    .cols {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .logos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
