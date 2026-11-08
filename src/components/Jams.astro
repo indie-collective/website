@@ -1,0 +1,223 @@
+---
+import { Image } from 'astro:assets';
+import { dictionaries, pick, type Lang } from '../i18n';
+import { jams } from '../data/jams';
+import { ORG_URL } from '../data/links';
+import { getAgenda, when } from '../lib/agenda';
+import { asset } from '../lib/images';
+import ProjectDialog from './ProjectDialog.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+const agenda = await getAgenda();
+---
+
+<section id="jams" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>{t.jams.title}</h2>
+        <p>{t.jams.lead}</p>
+      </div>
+      <a class="link-arrow" href={ORG_URL} target="_blank" rel="noopener">{t.jams.allJams} →</a>
+    </div>
+
+    <ol class="year">
+      {
+        jams.map((jam) => {
+          const summary = pick(jam.summary, lang);
+          const next = agenda.events.find((event) => jam.match.test(event.name));
+          const last = jam.editions?.[0];
+          return (
+            <li id={`jam-${jam.id}`} class:list={['jam', jam.season]}>
+              <div class="card">
+                <p class="season">{t.jams.seasons[jam.season]}</p>
+                <Image
+                  src={asset(jam.thumbnail)}
+                  alt=""
+                  width={540}
+                  widths={[300, 540]}
+                  sizes="(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 270px"
+                />
+                <div class="body">
+                  <h3>{jam.name}</h3>
+                  <p class="summary" lang={summary.lang}>
+                    {summary.text}
+                  </p>
+                  <p class="when">
+                    {next ? (
+                      <>
+                        <span class="label next">{t.jams.next}</span>
+                        <a href={next.url ?? ORG_URL} target="_blank" rel="noopener">
+                          {when(next, t.date.locale)}
+                        </a>
+                      </>
+                    ) : (
+                      last && (
+                        <>
+                          <span class="label">{t.jams.last}</span>
+                          <span>{last.year}</span>
+                        </>
+                      )
+                    )}
+                  </p>
+                  <button class="btn btn-secondary more" type="button" data-open={`dialog-${jam.id}`} aria-haspopup="dialog">
+                    {t.jams.more}
+                  </button>
+                </div>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+
+  {
+    jams.map((jam) => (
+      <ProjectDialog project={jam} lang={lang} closeLabel={t.jams.close} editionsLabel={t.jams.editions} />
+    ))
+  }
+</section>
+
+<style>
+  .year {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .jam {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .winter {
+    --stub: var(--season-winter);
+  }
+  .spring {
+    --stub: var(--season-spring);
+  }
+  .summer {
+    --stub: var(--season-summer);
+  }
+  .autumn {
+    --stub: var(--season-autumn);
+  }
+
+  /* Each jam is a ticket for its season: the stub on top, torn along the dashes. */
+  .season {
+    position: relative;
+    padding: var(--space-3) var(--space-4);
+    background: var(--stub);
+    color: var(--on-pop);
+    border-bottom: 2px dashed color-mix(in srgb, var(--on-pop) 35%, transparent);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .season::before,
+  .season::after {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--canvas);
+    z-index: 1;
+  }
+
+  .season::before {
+    left: -8px;
+  }
+
+  .season::after {
+    right: -8px;
+  }
+
+  .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    overflow: hidden;
+  }
+
+  .card :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-4) var(--space-5);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .summary {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .when {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    margin-top: auto;
+    padding-top: var(--space-2);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .label {
+    padding: 1px 8px;
+    border-radius: var(--radius-label);
+    background: var(--canvas);
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .label.next {
+    background: var(--sun);
+    color: var(--on-pop);
+  }
+
+  .more {
+    align-self: flex-start;
+    min-height: 38px;
+    padding: 6px 14px;
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 1000px) {
+    .year {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .year {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

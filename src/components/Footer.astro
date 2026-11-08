@@ -1,0 +1,76 @@
+---
+import { dictionaries, languages, type Lang } from '../i18n';
+import { COMMUNITY, GITHUB } from '../data/links';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap row">
+    <p class="who">
+      <Logo size={22} />
+      <span>© {year} {t.footer.rights}</span>
+    </p>
+    <ul>
+      <li><a href={COMMUNITY} target="_blank" rel="noopener">Community</a></li>
+      <li><a href={`${GITHUB}/website`} target="_blank" rel="noopener">{t.footer.source}</a></li>
+      {
+        Object.entries(languages)
+          .filter(([code]) => code !== lang)
+          .map(([code, l]) => (
+            <li>
+              <a href={l.path} hreflang={code} lang={code}>
+                {l.label}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .who {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  a {
+    color: var(--muted);
+  }
+
+  a:hover {
+    color: var(--brand-deep);
+  }
+</style>

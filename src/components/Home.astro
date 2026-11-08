@@ -1,0 +1,38 @@
+---
+import type { Lang } from '../i18n';
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Missions from './Missions.astro';
+import Agenda from './Agenda.astro';
+import Jams from './Jams.astro';
+import Stunfest from './Stunfest.astro';
+import Podcast from './Podcast.astro';
+import CommunityBand from './CommunityBand.astro';
+import Team from './Team.astro';
+import Resources from './Resources.astro';
+import Join from './Join.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<Base lang={lang}>
+  <Header lang={lang} />
+  <main id="main">
+    <Hero lang={lang} />
+    <Agenda lang={lang} />
+    <Missions lang={lang} />
+    <Jams lang={lang} />
+    <Stunfest lang={lang} />
+    <Podcast lang={lang} />
+    <CommunityBand lang={lang} />
+    <Team lang={lang} />
+    <Resources lang={lang} />
+    <Join lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Base>

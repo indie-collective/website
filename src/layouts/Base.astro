@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { dictionaries, languages, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+const site = Astro.site!;
+const canonical = new URL(languages[lang].path, site).href;
+const ogImage = new URL('/img/portfolio/stunfest-indie-full.jpg', site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+    {
+      Object.entries(languages).map(([code, { path }]) => (
+        <link rel="alternate" hreflang={code} href={new URL(path, site).href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL('/', site).href} />
+    <link rel="icon" type="image/svg+xml" href="/img/logos/logo.svg" />
+    <link rel="icon" type="image/png" href="/img/logos/logo.png" />
+    <meta name="theme-color" content="#f3f6f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1715" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={t.date.locale.replace('-', '_')} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

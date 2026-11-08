@@ -1,0 +1,245 @@
+---
+import { dictionaries, languages, type Lang } from '../i18n';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+const nav = [
+  ['#agenda', t.nav.agenda],
+  ['#jams', t.nav.jams],
+  ['#stunfest', t.nav.stunfest],
+  ['#podcast', t.nav.podcast],
+  ['#community', 'Community'],
+  ['#equipe', t.nav.team],
+] as const;
+---
+
+<a class="skip" href="#main">{t.nav.skip}</a>
+<header class="header">
+  <div class="wrap bar">
+    <a class="brand" href={languages[lang].path}>
+      <Logo size={28} />
+      <span>Indie Collective</span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation">
+      <ul>
+        {nav.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="end">
+      <ul class="langs" aria-label={t.nav.language}>
+        {
+          Object.entries(languages).map(([code, l]) => (
+            <li>
+              <a href={l.path} hreflang={code} lang={code} aria-current={code === lang ? 'true' : undefined} title={l.label}>
+                {l.short}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn-primary join" href="#adherer">{t.nav.join}</a>
+
+      <details class="mobile">
+        <summary aria-label={t.nav.menu}><Icon name="menu" size={22} /></summary>
+        <div class="sheet">
+          <ul>
+            {nav.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+            <li><a href="#ressources">{t.nav.resources}</a></li>
+            <li><a href="#adherer">{t.nav.join}</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Close the mobile menu once a section is picked.
+  document.querySelectorAll<HTMLAnchorElement>('.mobile .sheet a').forEach((link) =>
+    link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'))
+  );
+</script>
+
+<style>
+  .skip {
+    position: absolute;
+    left: var(--space-4);
+    top: -100px;
+    z-index: 100;
+    background: var(--surface);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-control);
+  }
+  .skip:focus {
+    top: var(--space-3);
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--canvas) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(12px);
+    -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    min-height: 64px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .nav {
+    margin-inline-start: auto;
+  }
+
+  .nav ul,
+  .langs,
+  .sheet ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: var(--radius-control);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .nav a:hover {
+    background: var(--primary-subtle);
+    color: var(--brand-deep);
+  }
+
+  .end {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .langs {
+    display: flex;
+    padding: 3px;
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .langs a {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .langs a[aria-current] {
+    background: var(--ink);
+    color: var(--canvas);
+  }
+
+  .join {
+    min-height: 40px;
+    padding: 8px 16px;
+  }
+
+  .mobile {
+    display: none;
+    position: relative;
+  }
+
+  .mobile summary {
+    list-style: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-control);
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  .mobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile[open] summary {
+    background: var(--primary-subtle);
+  }
+
+  .sheet {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 220px;
+    padding: var(--space-2);
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .sheet a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: var(--radius-control);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sheet a:hover {
+    background: var(--primary-subtle);
+  }
+
+  @media (max-width: 1080px) {
+    .nav,
+    .join {
+      display: none;
+    }
+    .end {
+      margin-inline-start: auto;
+    }
+    .mobile {
+      display: block;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .brand span {
+      display: none;
+    }
+  }
+</style>

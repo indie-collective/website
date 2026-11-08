@@ -1,0 +1,190 @@
+---
+import { Image } from 'astro:assets';
+import { dictionaries, type Lang } from '../i18n';
+import { podcastLinks } from '../data/podcast';
+import { getPodcast } from '../lib/podcast';
+import { asset } from '../lib/images';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+const podcast = await getPodcast();
+const date = new Intl.DateTimeFormat(t.date.locale, { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<section id="podcast" class="section band">
+  <div class="wrap grid">
+    <div class="show">
+      <Image class="cover" src={asset('podcast-cover.jpg')} alt={t.podcast.cover} width={480} widths={[240, 480]} sizes="240px" />
+      <div>
+        <p class="kicker">{t.podcast.kicker}</p>
+        <h2>{t.podcast.title}</h2>
+        <p class="lead">{t.podcast.lead}</p>
+        {podcast.ok && <p class="count">{t.podcast.episodes.replace('{n}', String(podcast.count))}</p>}
+        <p class="listen">{t.podcast.listen}</p>
+        <ul class="platforms">
+          {
+            podcastLinks.map((link) => (
+              <li>
+                <a class="btn btn-secondary" href={link.href} target="_blank" rel="noopener">
+                  <Icon name={link.icon} />
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    {
+      podcast.episodes.length > 0 && (
+        <div class="latest">
+          <h3>{t.podcast.latest}</h3>
+          <ol>
+            {podcast.episodes.map((episode) => (
+              <li>
+                <a href={episode.url} target="_blank" rel="noopener" lang="fr">
+                  {episode.title}
+                </a>
+                <p class="meta">
+                  <time datetime={episode.date.toISOString()}>{date.format(episode.date)}</time>
+                  {episode.minutes && <span> · {t.podcast.minutes.replace('{n}', String(episode.minutes))}</span>}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .band {
+    background: var(--primary-subtle);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .show {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .show :global(.cover) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-lift);
+    transform: rotate(-2deg);
+  }
+
+  .kicker {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brand-deep);
+  }
+
+  h2 {
+    margin-top: var(--space-2);
+    font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  }
+
+  .lead {
+    margin-top: var(--space-3);
+    color: var(--muted);
+    max-width: 48ch;
+  }
+
+  .count {
+    margin-top: var(--space-3);
+    font-weight: 600;
+  }
+
+  .listen {
+    margin-top: var(--space-5);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .platforms {
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .latest {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    padding: var(--space-5);
+  }
+
+  .latest h3 {
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  .latest ol {
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: 0;
+  }
+
+  .latest li {
+    padding-block: var(--space-3);
+  }
+
+  .latest li + li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .latest a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  .latest a:hover {
+    color: var(--brand-deep);
+    text-decoration: underline;
+  }
+
+  .meta {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 1000px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .show {
+      grid-template-columns: 1fr;
+    }
+    .show :global(.cover) {
+      width: 160px;
+    }
+  }
+</style>

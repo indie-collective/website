@@ -1,0 +1,100 @@
+---
+// The agenda, under the hero. The next event is the ticket rising from the
+// hero; this lists the ones after it.
+import { dictionaries, type Lang } from '../i18n';
+import { CALENDAR_WEBCAL, ORG_URL } from '../data/links';
+import { getAgenda } from '../lib/agenda';
+import Icon from './Icon.astro';
+import Ticket from './Ticket.astro';
+
+interface Props {
+  lang: Lang;
+}
+const t = dictionaries[Astro.props.lang];
+const agenda = await getAgenda();
+const later = agenda.events.slice(1, 6);
+---
+
+<section id="agenda" class="agenda">
+  <div class="wrap grid">
+    <div class="head">
+      <h2>{t.agenda.title}</h2>
+      <p class="lead">{t.agenda.lead}</p>
+      <div class="actions">
+        <a class="btn btn-secondary" href={CALENDAR_WEBCAL}><Icon name="calendar" />{t.agenda.subscribe}</a>
+        <a class="link-arrow" href={ORG_URL} target="_blank" rel="noopener">{t.agenda.all} →</a>
+      </div>
+    </div>
+
+    <div class="list">
+      {
+        later.length > 0 ? (
+          <ul>
+            {later.map((event) => (
+              <li>
+                <Ticket event={event} locale={t.date.locale} canceledLabel={t.agenda.canceled} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="note">
+            {!agenda.ok ? t.agenda.unavailable : agenda.events.length === 0 ? t.agenda.empty : t.agenda.onlyOne}
+          </p>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .agenda {
+    --ticket-notch: var(--primary-subtle);
+    background: var(--primary-subtle);
+    padding-block: var(--space-7) var(--space-9);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: var(--space-5) var(--space-7);
+    align-items: start;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  }
+
+  .lead {
+    margin-top: var(--space-2);
+    color: var(--muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-5);
+    margin-top: var(--space-5);
+  }
+
+  .list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .note {
+    padding: var(--space-5);
+    border: 2px dashed color-mix(in srgb, var(--brand-deep) 25%, transparent);
+    border-radius: var(--radius-card);
+    color: var(--muted);
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,185 @@
+---
+import { dictionaries, type Lang } from '../i18n';
+import { DISCORD, EMAIL, HELLOASSO_WIDGET, NEWSLETTER, socials } from '../data/links';
+import { getMembers } from '../lib/helloasso';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const t = dictionaries[Astro.props.lang];
+const members = await getMembers();
+const number = new Intl.NumberFormat(t.date.locale);
+const label = (forms: { one: string; other: string }, count: number, values: Record<string, number>) =>
+  Object.entries(values).reduce((text, [key, value]) => text.replace(`{${key}}`, String(value)), count === 1 ? forms.one : forms.other);
+---
+
+<section id="adherer" class="section band">
+  <div class="wrap grid">
+    <div class="contact">
+      <h2>{t.join.title}</h2>
+      <p class="lead">{t.join.lead}</p>
+      {
+        members && (
+          <dl class="stats">
+            <div>
+              <dt>{label(t.join.members.thisYear, members.thisYear, { year: members.year })}</dt>
+              <dd>{number.format(members.thisYear)}</dd>
+            </div>
+            {members.allTime > members.thisYear && (
+              <div>
+                <dt>{label(t.join.members.allTime, members.allTime, { since: members.since })}</dt>
+                <dd>{number.format(members.allTime)}</dd>
+              </div>
+            )}
+          </dl>
+        )
+      }
+
+      <h3>{t.join.contact}</h3>
+      <div class="actions">
+        <a class="btn btn-primary" href={DISCORD} target="_blank" rel="noopener"><Icon name="discord" />{t.join.discord}</a>
+        <a class="btn btn-secondary" href={NEWSLETTER} target="_blank" rel="noopener"><Icon name="mail" />{t.join.newsletter}</a>
+      </div>
+      <p class="email">
+        <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      </p>
+      <ul class="socials">
+        {
+          socials.map((social) => (
+            <li>
+              <a href={social.href} target="_blank" rel="noopener" title={social.name}>
+                <Icon name={social.icon} size={20} label={social.name} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="widget">
+      <iframe
+        id="haWidget"
+        title={t.join.widgetTitle}
+        src={HELLOASSO_WIDGET}
+        loading="lazy"
+        allowtransparency="true"></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band {
+    background: var(--primary-subtle);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  }
+
+  .lead {
+    margin-top: var(--space-3);
+    color: var(--muted);
+    max-width: 44ch;
+  }
+
+  /* The figure first, its label under it. */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5) var(--space-7);
+    margin: var(--space-6) 0 0;
+  }
+
+  .stats div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .stats dd {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--brand-deep);
+  }
+
+  .stats dt {
+    margin-top: var(--space-2);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  h3 {
+    margin-top: var(--space-7);
+    font-size: 1.15rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .email {
+    margin-top: var(--space-4);
+    font-weight: 600;
+  }
+
+  .socials {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .socials a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .socials a:hover {
+    color: var(--brand-deep);
+    box-shadow: var(--shadow-raised-hover);
+  }
+
+  /* HelloAsso's widget is white whatever the theme: it sits on a white panel. */
+  .widget {
+    background: #ffffff;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-raised);
+    padding: var(--space-3);
+    overflow: hidden;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 760px;
+    border: 0;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
