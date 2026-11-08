@@ -23,6 +23,7 @@ const en: Dictionary = {
     kicker: 'Indie Games & Jams · Rennes',
     title: 'Keeping indie games alive in Rennes',
     next: 'Next event',
+    credit: 'Photo: Lila Bienvenu, Stunfest 2022',
     lead: "Indie Collective is the association behind Rennes' game jams. We co-organise the Indie zone at Stunfest and run Community, the open directory of indie games.",
     join: 'Become a member',
     discord: 'Join the Discord',

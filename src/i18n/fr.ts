@@ -21,6 +21,7 @@ export default {
     kicker: 'Indie Games & Jams · Rennes',
     title: 'On fait vivre le jeu indé à Rennes',
     next: 'Prochain rendez-vous',
+    credit: 'Photo : Lila Bienvenu, Stunfest 2022',
     lead: "Indie Collective est l'association qui organise les game jams rennaises, co-organise la zone Indie du Stunfest et tient Community, l'annuaire ouvert du jeu indépendant.",
     join: "Adhérer à l'asso",
     discord: 'Rejoindre le Discord',

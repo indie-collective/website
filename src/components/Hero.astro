@@ -39,6 +39,7 @@ const next = (await getAgenda()).events[0];
       </div>
     </div>
     <p class="sticker">Stunfest · Zone Indie</p>
+    <p class="wrap credit">{t.hero.credit}</p>
   </div>
 
   {
@@ -167,6 +168,16 @@ const next = (await getAgenda()).events[0];
     box-shadow: var(--shadow-lift);
   }
 
+  /* The photographer, small, on the photo's bottom-left corner. */
+  .credit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: var(--space-4);
+    font-size: 0.75rem;
+    color: rgb(243 246 242 / 0.6);
+  }
+
   /* The next ticket straddles the hero's bottom edge. */
   .rise {
     position: relative;
@@ -193,6 +204,12 @@ const next = (await getAgenda()).events[0];
     }
     .sticker {
       top: var(--space-5);
+    }
+    /* The ticket covers the bottom edge on phones: the credit goes under the sticker. */
+    .credit {
+      top: calc(var(--space-5) + var(--space-7));
+      bottom: auto;
+      text-align: right;
     }
     .lead {
       font-size: 1.05rem;
