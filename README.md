@@ -38,7 +38,7 @@ npm run build    # into dist/
 
 ### The agenda comes from Community
 
-Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. Once the daily trigger is on, the site is rebuilt every morning; until then, on demand from the Actions tab.
+Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. The site is rebuilt every morning, or on demand from the Actions tab.
 
 Each jam's and Stunfest's past editions (`editions` in `src/data/jams.ts`) link to their pages on Community; add the new one each year. A jam's next edition, and the next Stunfest, show by themselves once Community lists them.
 
@@ -52,4 +52,4 @@ This needs a HelloAsso API client with access to transactions: create one in the
 
 ### Deploying
 
-The site deploys through GitHub Actions (`.github/workflows/deploy.yml`). For now the workflow only runs by hand, from the Actions tab, so the old site stays live until the new one is approved. To go live: in the repository's settings, set Pages' source to **GitHub Actions**, and restore the push and daily triggers noted in the workflow.
+Every push to `master` builds and deploys the site through GitHub Actions (`.github/workflows/deploy.yml`), to GitHub Pages, whose source is set to **GitHub Actions**. The site is also rebuilt every morning, and can be rebuilt by hand from the Actions tab.
