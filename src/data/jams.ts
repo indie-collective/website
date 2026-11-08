@@ -49,8 +49,15 @@ const projects: Project[] = [
         'A game jam, the Stunjam, is open to the public ahead of the festival: a jam for game-making enthusiasts (and newcomers), whose games are then shown at Stunfest on a dedicated stand.',
         `The association also builds the ${a('https://indie.stunfest.com', 'website presenting the indie exhibitors')}, runs the public vote and makes the ${a('https://www.youtube.com/watch?v=ScQiXpl756A&list=PLPQ275dd4YUJEc8SrOTcUdx21CTi7CGHL', 'trailer')} of the games shown at the Indie Awards.`,
       ],
+      br: [
+        `Ar ${a(STUNFEST, 'Stunfest')}, gouel sevenadurioù ar c'hoari video e Roazhon, krouet e 2005 hag aozet gant ar gevredigezh ${a(HIT_COMBO, '3 Hit Combo')}, a zegemer ac'hanomp abaoe 2012 evit kenurzhiañ ul lodenn eus ar gouel.`,
+        "Troet da gentañ war-zu ar studioioù c'hoarioù video dizalc'h, al lodenn-se a vrasa bep bloaz hag a zegemer bremañ staliadurioù orin, atalieroù berrbad hag arvestoù all e-pad ar gouel.",
+        "Pal al lodenn-se eo lakaat war wel ar grouidigezh c'hoarioù video en he holl stummoù, eus Bro-C'hall pe eus lec'h all. Ur juri a ro ivez meur a briz d'ar c'hoarioù « karet » eus an Takad Indie.",
+        "Ur game jam, ar Stunjam, a vez kinniget d'an holl a-raok ar gouel : ur jam evit ar re a blij dezho krouiñ c'hoarioù video, hag ar re all ivez, a ziskouez er Stunfest c'hoarioù krouet gant amatourien war ur stal dezho.",
+        `Ar gevredigezh a sav ivez ${a('https://indie.stunfest.com', "al lec'hienn a ginnig an diskouezerien dizalc'h")}, a aoz votadeg an holl hag a ra ${a('https://www.youtube.com/watch?v=ScQiXpl756A&list=PLPQ275dd4YUJEc8SrOTcUdx21CTi7CGHL', 'trailer')} ar c'hoarioù kinniget en Indie Awards.`,
+      ],
     },
-    links: [{ label: { fr: 'Le site Indie Stunfest', en: 'The Indie Stunfest website' }, href: 'https://indie.stunfest.com' }],
+    links: [{ label: { fr: 'Le site Indie Stunfest', en: 'The Indie Stunfest website', br: "Lec'hienn Indie Stunfest" }, href: 'https://indie.stunfest.com' }],
     editions: [
       { year: '2026', slug: 'stunfest-2026-20eme-edition' },
       { year: '2025', slug: 'stunfest-2025' },
@@ -115,7 +122,7 @@ const projects: Project[] = [
         ourRole.en,
       ],
       br: [
-        `Ar Stunjam 'zo un atalier krouadenn c'hoari e skipailh e-pad 48e, e furm c'hoari video, c'hoari taolenn pe furm hiron, a vez aozet, peurliesañ, ar dibenn-sizhun a-roak ar ${a(STUNFEST, 'Stunfest')}, festival des cultures vidéoludiques e Roazhon.`,
+        `Ar Stunjam 'zo un atalier krouadenn c'hoari e skipailh e-pad 48e, e furm c'hoari video, c'hoari taolenn pe furm hiron, a vez aozet, peurliesañ, ar dibenn-sizhun a-roak ar ${a(STUNFEST, 'Stunfest')}, gouel sevenadurioù ar c'hoari video e Roazhon.`,
         "Un tem a vez dizoloet e deroù 48e krouadenn d'ar jammers ha palioù dibab a c'hall bezañ sevenet e bep c'hoarioù evit pimantañ ar diaester ar krouadenn.",
         "Dibarded ar jam-mañ eo lakaet e framm gouel-meur. E Stunfest e vez kinniget ar c'hoarioù er stal dediet e-kichen studios disalc'h.",
         ourRole.br,
@@ -148,6 +155,11 @@ const projects: Project[] = [
         `It falls on the night the clocks go back, so jammers can also take part in the ${a('https://0hgame.sos.gd/', '0h game jam')}: one hour of game-making between 2 a.m. (summer time) and 2 a.m. (winter time).`,
         ourRole.en,
       ],
+      br: [
+        "An Octojam zo un atalier a ginnig krouiñ c'hoarioù a-skipailh e-pad 48 eurvezh, e stumm c'hoari video, c'hoari taolenn pe stumm kemmesk, e-pad dibenn-sizhun diwezhañ miz Here. Un tem a vez roet d'ar jammers e deroù an 48 eurvezh krouiñ, ha kalz palioù dibab a c'hall bezañ tizhet war bep c'hoari evit ouzhpennañ diaester.",
+        `Dibar eo ar jam-mañ rak c'hoarvezout a ra pa cheñch an eur. Kinniget e vez d'ar jammers kemer perzh, e-kreiz an Octojam, er ${a('https://0hgame.sos.gd/', '0h game jam')}, un atalier un eurvezh etre 2e (eur an hañv) ha 2e (eur ar goañv) diouzh ar mintin.`,
+        ourRole.br,
+      ],
     },
     editions: [
       { year: '2026', slug: 'octojam-2026-stunjam-edition' },
@@ -174,6 +186,10 @@ const projects: Project[] = [
       en: [
         'The BBQ Jam is a 48-hour team game-making event (video games, board games or hybrids) held in the summer. Jammers discover the theme when the 48 hours start, and optional achievements add to the challenge.',
         ourRole.en,
+      ],
+      br: [
+        "Ar BBQ Jam zo un atalier a ginnig krouiñ c'hoarioù a-skipailh e-pad 48 eurvezh, e stumm c'hoari video, c'hoari taolenn pe stumm kemmesk, e-pad an hañv. Un tem a vez roet d'ar jammers e deroù an 48 eurvezh krouiñ, ha kalz palioù dibab a c'hall bezañ tizhet war bep c'hoari evit ouzhpennañ diaester.",
+        ourRole.br,
       ],
     },
     editions: [
@@ -211,6 +227,7 @@ export const jams: Jam[] = [
     summary: {
       fr: '48 h de création en même temps que le monde entier, fin janvier.',
       en: '48 hours of game-making alongside the whole world, in late January.',
+      br: "48 eurvezh krouiñ asambles gant ar bed a-bezh, e dibenn miz Genver.",
     },
     match: /global game jam/i,
   },
@@ -220,6 +237,7 @@ export const jams: Jam[] = [
     summary: {
       fr: 'La jam du Stunfest : les jeux créés sont exposés au festival.',
       en: "Stunfest's own jam: the games made are shown at the festival.",
+      br: "Jam ar Stunfest : diskouezet e vez ar c'hoarioù krouet er gouel.",
     },
     match: /^stunjam/i,
   },
@@ -229,6 +247,7 @@ export const jams: Jam[] = [
     summary: {
       fr: "La jam de l'été : 48 h de création de jeux en équipe.",
       en: 'The summer jam: 48 hours of team game-making.',
+      br: "Jam an hañv : 48 eurvezh krouiñ c'hoarioù a-skipailh.",
     },
     match: /bbq jam/i,
   },
@@ -238,6 +257,7 @@ export const jams: Jam[] = [
     summary: {
       fr: "Le dernier week-end d'octobre, avec la 0h game jam au changement d'heure.",
       en: 'The last weekend of October, with the 0h game jam when the clocks go back.',
+      br: 'Dibenn-sizhun diwezhañ miz Here, gant ar 0h game jam pa cheñch an eur.',
     },
     match: /octojam/i,
   },
