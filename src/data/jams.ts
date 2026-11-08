@@ -27,7 +27,7 @@ const ourRole = {
 
 const organising: Localized = { fr: "Organisation de l'évènement", en: 'Organising the event', br: 'Aozadur ar darvoud' };
 
-export const projects: Project[] = [
+const projects: Project[] = [
   {
     id: 'stunfest',
     name: 'Stunfest',
@@ -51,6 +51,14 @@ export const projects: Project[] = [
       ],
     },
     links: [{ label: { fr: 'Le site Indie Stunfest', en: 'The Indie Stunfest website' }, href: 'https://indie.stunfest.com' }],
+    editions: [
+      { year: '2026', slug: 'stunfest-2026-20eme-edition' },
+      { year: '2025', slug: 'stunfest-2025' },
+      { year: '2019', slug: 'stunfest-2019-15eme-festival-de-jeu-video' },
+      { year: '2018', slug: 'stunfest-2018' },
+      { year: '2014', slug: 'stunfest-2014' },
+      { year: '2013', slug: 'stunfest-2013' },
+    ],
   },
   {
     id: 'ggj',
@@ -174,27 +182,64 @@ export const projects: Project[] = [
       { year: '2023', slug: 'bbq-jam-creation-de-jeux-en-48h-2023' },
     ],
   },
+];
+
+const byId = (id: string) => {
+  const project = projects.find((p) => p.id === id);
+  if (!project) throw new Error(`No project ${id}`);
+  return project;
+};
+
+export const stunfest = byId('stunfest');
+export const STUNFEST_URL = STUNFEST;
+
+export type Season = 'winter' | 'spring' | 'summer' | 'autumn';
+
+export type Jam = Project & {
+  season: Season;
+  /** One line for the card. */
+  summary: Localized;
+  /** Recognises this jam's events in the agenda, by name. */
+  match: RegExp;
+};
+
+// One jam per season, in the order of the year.
+export const jams: Jam[] = [
   {
-    id: 'podcast',
-    name: 'Podcast Indie & Co',
-    thumbnail: 'portfolio/indie-and-co-cover-thumbnail.png',
-    photo: 'portfolio/indie-and-co-cover-thumbnail.png',
-    role: { fr: 'Réalisation', en: 'Production', br: 'Sevenidigezh' },
-    body: {
-      fr: [
-        "Découvrez les coulisses de la création d'un jeu vidéo, le parcours personnel et professionnel d'intervenants issus du monde indépendant.",
-      ],
-      en: [
-        'Go behind the scenes of making a video game, through the personal and professional paths of people from the indie world.',
-      ],
+    ...byId('ggj'),
+    season: 'winter',
+    summary: {
+      fr: '48 h de création en même temps que le monde entier, fin janvier.',
+      en: '48 hours of game-making alongside the whole world, in late January.',
     },
-    links: [
-      { label: { fr: 'Écouter le podcast', en: 'Listen to the podcast', br: 'Savennoù podkast' }, href: 'https://anchor.fm/indieandco' },
-      {
-        label: { fr: 'Sur YouTube', en: 'On YouTube', br: 'Chadenn YouTube' },
-        href: 'https://www.youtube.com/watch?v=hp0ibRhFfOk&list=PLPQ275dd4YULfUMMWKDQHvjZSeYDzNHVi',
-      },
-    ],
+    match: /global game jam/i,
+  },
+  {
+    ...byId('stunjam'),
+    season: 'spring',
+    summary: {
+      fr: 'La jam du Stunfest : les jeux créés sont exposés au festival.',
+      en: "Stunfest's own jam: the games made are shown at the festival.",
+    },
+    match: /^stunjam/i,
+  },
+  {
+    ...byId('bbq-jam'),
+    season: 'summer',
+    summary: {
+      fr: "La jam de l'été : 48 h de création de jeux en équipe.",
+      en: 'The summer jam: 48 hours of team game-making.',
+    },
+    match: /bbq jam/i,
+  },
+  {
+    ...byId('octojam'),
+    season: 'autumn',
+    summary: {
+      fr: "Le dernier week-end d'octobre, avec la 0h game jam au changement d'heure.",
+      en: 'The last weekend of October, with the 0h game jam when the clocks go back.',
+    },
+    match: /octojam/i,
   },
 ];
 

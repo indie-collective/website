@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import { dictionaries, type Lang } from '../i18n';
+import { stunfest, STUNFEST_URL, eventUrl } from '../data/jams';
+import { nextEvent, when } from '../lib/agenda';
+import { asset } from '../lib/images';
+import Icon from './Icon.astro';
+import ProjectDialog from './ProjectDialog.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dictionaries[lang];
+// Shown once Community lists the next Stunfest.
+const next = await nextEvent(/stunfest/i);
+const last = stunfest.editions?.[0];
+---
+
+<section id="stunfest" class="section">
+  <div class="wrap grid">
+    <figure class="photo">
+      <Image
+        src={asset('portfolio/stunfest-indie-thumbnail.jpg')}
+        alt=""
+        width={900}
+        widths={[480, 900]}
+        sizes="(max-width: 860px) 100vw, 520px"
+      />
+    </figure>
+    <div class="copy">
+      <p class="kicker">{t.stunfest.kicker}</p>
+      <h2>{t.stunfest.title}</h2>
+      <p class="lead">{t.stunfest.lead}</p>
+
+      {
+        next ? (
+          <p class="next">
+            <span class="label">{t.stunfest.next}</span>
+            <a href={next.url ?? STUNFEST_URL} target="_blank" rel="noopener">
+              {when(next, t.date.locale)}
+            </a>
+          </p>
+        ) : (
+          last && (
+            <p class="next">
+              <span class="label quiet">{t.jams.last}</span>
+              <a href={eventUrl(last.slug)} target="_blank" rel="noopener">
+                {last.year}
+              </a>
+            </p>
+          )
+        )
+      }
+
+      <div class="actions">
+        <a class="btn btn-primary" href={STUNFEST_URL} target="_blank" rel="noopener">
+          {t.stunfest.official}
+          <Icon name="arrow" />
+        </a>
+        <a class="btn btn-secondary" href="https://indie.stunfest.com" target="_blank" rel="noopener">{t.stunfest.indie}</a>
+        <button class="btn btn-plain" type="button" data-open="dialog-stunfest" aria-haspopup="dialog">{t.stunfest.more}</button>
+      </div>
+    </div>
+  </div>
+  <ProjectDialog project={stunfest} lang={lang} closeLabel={t.jams.close} editionsLabel={t.stunfest.editions} />
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .photo {
+    margin: 0;
+  }
+
+  .photo :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .kicker {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brand-deep);
+  }
+
+  h2 {
+    margin-top: var(--space-2);
+    font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  }
+
+  .lead {
+    margin-top: var(--space-4);
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 52ch;
+  }
+
+  .next {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    font-weight: 600;
+  }
+
+  .label {
+    padding: 1px 8px;
+    border-radius: var(--radius-label);
+    background: var(--sun);
+    color: var(--on-pop);
+    font-size: 0.8rem;
+  }
+
+  .label.quiet {
+    background: var(--surface);
+    color: var(--muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .btn-plain {
+    background: none;
+    color: var(--brand-deep);
+    padding-inline: var(--space-2);
+  }
+
+  .btn-plain:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

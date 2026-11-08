@@ -3,7 +3,7 @@
 // rebuilt every day (.github/workflows/deploy.yml), so the list stays fresh
 // without any script on the page.
 import ICAL from 'ical.js';
-import { CALENDAR_ICS } from '../data/links';
+import { CALENDAR_ALL_ICS, CALENDAR_ICS } from '../data/links';
 
 export type AgendaEvent = {
   uid: string;
@@ -18,14 +18,22 @@ export type AgendaEvent = {
 
 export type Agenda = { ok: true; events: AgendaEvent[] } | { ok: false; events: [] };
 
-let cached: Promise<Agenda> | undefined;
+const cache = new Map<string, Promise<Agenda>>();
+const fetchOnce = (url: string) => {
+  if (!cache.has(url)) cache.set(url, load(url));
+  return cache.get(url)!;
+};
 
-/** Fetched once per build, shared by the three language pages. */
-export const getAgenda = () => (cached ??= load());
+/** The association's own events. Fetched once per build, shared by the three language pages. */
+export const getAgenda = () => fetchOnce(CALENDAR_ICS);
 
-async function load(): Promise<Agenda> {
+/** The next event on all of Community whose name matches, such as the next Stunfest. */
+export const nextEvent = async (match: RegExp) =>
+  (await fetchOnce(CALENDAR_ALL_ICS)).events.find((event) => match.test(event.name)) ?? null;
+
+async function load(url: string): Promise<Agenda> {
   try {
-    const response = await fetch(CALENDAR_ICS, { signal: AbortSignal.timeout(15_000) });
+    const response = await fetch(url, { signal: AbortSignal.timeout(15_000) });
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
     const events = parse(await response.text());
     const now = Date.now();
@@ -35,7 +43,7 @@ async function load(): Promise<Agenda> {
     };
   } catch (error) {
     // A build must not fail because Community is down: the section says so instead.
-    console.warn(`[agenda] could not load ${CALENDAR_ICS}:`, error);
+    console.warn(`[agenda] could not load ${url}:`, error);
     return { ok: false, events: [] };
   }
 }

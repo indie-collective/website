@@ -9,11 +9,12 @@ interface Props {
 const { lang } = Astro.props;
 const t = dictionaries[lang];
 const nav = [
-  ['#association', t.nav.association],
   ['#agenda', t.nav.agenda],
-  ['#projets', t.nav.projects],
+  ['#jams', t.nav.jams],
+  ['#stunfest', t.nav.stunfest],
+  ['#podcast', t.nav.podcast],
+  ['#community', 'Community'],
   ['#equipe', t.nav.team],
-  ['#ressources', t.nav.resources],
 ] as const;
 ---
 
@@ -50,6 +51,7 @@ const nav = [
         <div class="sheet">
           <ul>
             {nav.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+            <li><a href="#ressources">{t.nav.resources}</a></li>
             <li><a href="#adherer">{t.nav.join}</a></li>
           </ul>
         </div>
@@ -222,7 +224,7 @@ const nav = [
     background: var(--primary-subtle);
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1080px) {
     .nav,
     .join {
       display: none;

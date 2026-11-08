@@ -3,6 +3,8 @@ export const ORG_SLUG = 'indie-collective';
 export const ORG_URL = `${COMMUNITY}/org/${ORG_SLUG}`;
 /** The association's events, as an iCalendar feed, published by Community. */
 export const CALENDAR_ICS = `${ORG_URL}/calendar.ics`;
+/** Every event on Community. */
+export const CALENDAR_ALL_ICS = `${COMMUNITY}/calendar.ics`;
 export const CALENDAR_WEBCAL = CALENDAR_ICS.replace(/^https:/, 'webcal:');
 
 export const HELLOASSO_WIDGET =

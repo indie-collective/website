@@ -31,7 +31,7 @@ npm run build    # into dist/
 ### Where things are
 
 - `src/i18n/`: the interface text, one file per language. French (`fr.ts`) is the source: anything missing from `en.ts` or `br.ts` shows in French. `npm run i18n:missing` lists what Breton still lacks.
-- `src/data/`: projects, team and links. Long texts carry their own translations, with French as the fallback.
+- `src/data/`: the jams and Stunfest (`jams.ts`), the podcast, the team and links. Long texts carry their own translations, with French as the fallback.
 - `src/components/`: one component per section of the page.
 - `src/styles/tokens.css`: colours, type and radii, shared with [Community](https://community.indieco.xyz) (`app/theme.js` in indie-collective/community). Change both together.
 - `src/assets/`: photos, resized by Astro at build time. `public/`: files served as-is (logos, documents' icons, `CNAME`).
@@ -40,7 +40,9 @@ npm run build    # into dist/
 
 Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. Once the daily trigger is on, the site is rebuilt every morning; until then, on demand from the Actions tab.
 
-Each project's past editions (`editions` in `src/data/projects.ts`) link to their pages on Community; add the new one each year.
+Each jam's and Stunfest's past editions (`editions` in `src/data/jams.ts`) link to their pages on Community; add the new one each year. A jam's next edition, and the next Stunfest, show by themselves once Community lists them.
+
+The podcast's latest episodes are read at build time from its RSS feed.
 
 ### Deploying
 

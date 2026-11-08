@@ -6,7 +6,6 @@ import type { PartialDictionary } from './index';
 const br: PartialDictionary = {
   nav: {
     association: 'Ar gevredigezh',
-    projects: 'Raktresoù',
     team: 'Ar skipailh',
     resources: 'Media',
     join: 'Emezelit !',
@@ -33,10 +32,6 @@ const br: PartialDictionary = {
   agenda: {
     title: 'Darvoudoù da zont',
     lead: 'Emgavioù ar gevredigezh da zont !',
-  },
-  projects: {
-    title: 'Raktresoù',
-    lead: 'Raktresoù ar gevredigezh adkavout amañ dindan.',
   },
   team: {
     title: 'Ar skipailh',
