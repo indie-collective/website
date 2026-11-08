@@ -41,13 +41,6 @@ export const team: Member[] = [
     links: [{ kind: 'x', href: 'https://twitter.com/urmlfou' }],
   },
   {
-    first: 'Vincent',
-    last: 'Poesmann',
-    photo: 'team/vincent.png',
-    group: 'ca',
-    tagline: { fr: 'Quart de cercleur à la retraite', en: 'Retired quarter-circler', br: "Kard kelc'hier war al leve" },
-  },
-  {
     first: 'Nathan',
     last: 'Chavry',
     photo: 'team/nathan.jpeg',
