@@ -1,11 +1,10 @@
 name: Deploy
 
+# Manual only for now: the old site stays live until the new one is approved.
+# To go live, switch Pages to "GitHub Actions" and restore these triggers:
+#   push: { branches: [master] }
+#   schedule: [{ cron: '0 5 * * *' }]   # daily, to refresh the agenda
 on:
-  push:
-    branches: [master]
-  # Every morning, so the agenda (read from Community at build time) stays current.
-  schedule:
-    - cron: '0 5 * * *'
   workflow_dispatch:
 
 permissions:

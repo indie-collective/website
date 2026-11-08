@@ -38,10 +38,10 @@ npm run build    # into dist/
 
 ### The agenda comes from Community
 
-Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. The site is rebuilt every morning (`.github/workflows/deploy.yml`), or on demand from the Actions tab.
+Upcoming events are read at build time from the association's calendar on Community, `https://community.indieco.xyz/org/indie-collective/calendar.ics`. To add an event to the site, add it to Community with Indie Collective as organiser. Once the daily trigger is on, the site is rebuilt every morning; until then, on demand from the Actions tab.
 
 Each project's past editions (`editions` in `src/data/projects.ts`) link to their pages on Community; add the new one each year.
 
 ### Deploying
 
-Every push to `master` builds and deploys through GitHub Actions. In the repository's settings, Pages must use **GitHub Actions** as its source.
+The site deploys through GitHub Actions (`.github/workflows/deploy.yml`). For now the workflow only runs by hand, from the Actions tab, so the old site stays live until the new one is approved. To go live: in the repository's settings, set Pages' source to **GitHub Actions**, and restore the push and daily triggers noted in the workflow.
