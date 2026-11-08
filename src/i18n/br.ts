@@ -16,7 +16,6 @@ const br: PartialDictionary = {
   },
   missions: {
     title: 'Ar gevredigezh',
-    lead: 'Lakaat da vevañ ar gumuniezh gant tri kefridioù.',
     items: {
       stunfest: {
         text: "Unan eus darvoudoù brasañ d'ar bloaz evit an degemer hag ar kinnig an holl a blij dezho c'hoarioù video disalc'h.",

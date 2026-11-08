@@ -8,6 +8,7 @@ const t = dictionaries[Astro.props.lang];
 const items = [
   { key: 'stunfest', href: '#stunfest' },
   { key: 'jams', href: '#jams' },
+  { key: 'podcast', href: '#podcast' },
   { key: 'community', href: '#community' },
 ] as const;
 ---
@@ -44,7 +45,7 @@ const items = [
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     border-top: 1px solid var(--rule);
   }
 
@@ -89,6 +90,21 @@ const items = [
     margin-top: var(--space-2);
     color: var(--muted);
     max-width: 34ch;
+  }
+
+  @media (max-width: 1000px) {
+    .missions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .missions li:nth-child(3) {
+      border-left: 0;
+    }
+    .missions li:nth-child(odd) a {
+      padding-left: 0;
+    }
+    .missions li:nth-child(n + 3) {
+      border-top: 1px solid var(--rule);
+    }
   }
 
   @media (max-width: 760px) {

@@ -31,7 +31,7 @@ const en: Dictionary = {
   },
   missions: {
     title: 'The association',
-    lead: 'Fuelling the community with three missions',
+    lead: 'Fuelling the community with four missions',
     items: {
       stunfest: {
         title: 'Stunfest',
@@ -40,6 +40,10 @@ const en: Dictionary = {
       jams: {
         title: 'Jams',
         text: 'Team game-making challenges against the clock, on a given theme.',
+      },
+      podcast: {
+        title: 'Podcast',
+        text: 'Indie & Co, behind the scenes of making video games, and the paths of the people who make them.',
       },
       community: {
         title: 'Community',

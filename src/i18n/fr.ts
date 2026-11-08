@@ -29,7 +29,7 @@ export default {
   },
   missions: {
     title: "L'association",
-    lead: 'Faire carburer la communauté avec trois missions',
+    lead: 'Faire carburer la communauté avec quatre missions',
     items: {
       stunfest: {
         title: 'Stunfest',
@@ -38,6 +38,10 @@ export default {
       jams: {
         title: 'Jams',
         text: 'Des défis de création de jeu en équipe avec une limite de temps et un thème donné.',
+      },
+      podcast: {
+        title: 'Podcast',
+        text: "Indie & Co, les coulisses de la création de jeux vidéo et le parcours de celles et ceux qui les font.",
       },
       community: {
         title: 'Community',
