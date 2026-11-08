@@ -1,5 +1,4 @@
 @import '@fontsource/poppins/600.css';
-@import '@fontsource/poppins/700.css';
 @import '@fontsource-variable/inter';
 @import './tokens.css';
 
@@ -30,9 +29,9 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   margin: 0;
   text-wrap: balance;
 }
@@ -71,7 +70,13 @@ a:hover {
 }
 
 .section {
-  padding-block: var(--space-8);
+  padding-block: var(--space-9);
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding-block: var(--space-8);
+  }
 }
 
 .section-head {
@@ -106,7 +111,11 @@ a:hover {
   text-decoration: none;
   border: 0;
   cursor: pointer;
-  transition: background-color 0.15s, transform 0.15s;
+  transition: background-color 160ms var(--ease), transform 160ms var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn svg {

@@ -1,0 +1,205 @@
+---
+// An event as a ticket: the date on a stub, a perforated edge, the event on
+// the rest. A jam's stub takes its season's colour.
+import { seasonOf } from '../data/jams';
+import { place, stub, when, type AgendaEvent } from '../lib/agenda';
+import Icon from './Icon.astro';
+
+interface Props {
+  event: AgendaEvent;
+  locale: string;
+  canceledLabel: string;
+  /** Larger, for the hero. */
+  big?: boolean;
+  /** A line above the name, like "Next event". */
+  eyebrow?: string;
+}
+const { event, locale, canceledLabel, big = false, eyebrow } = Astro.props;
+const { day, month } = stub(event.start, locale);
+const season = seasonOf(event.name);
+const Tag = event.url ? 'a' : 'div';
+---
+
+<Tag
+  class:list={['ticket', season ?? 'other', { big, canceled: event.canceled }]}
+  href={event.url ?? undefined}
+  target={event.url ? '_blank' : undefined}
+  rel={event.url ? 'noopener' : undefined}
+>
+  <div class="stub" aria-hidden="true">
+    <span class="day">{day}</span>
+    <span class="month">{month}</span>
+  </div>
+  <div class="body">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h3>{event.name}</h3>
+    <p class="when">
+      <time datetime={event.start.toISOString()}>{when(event, locale)}</time>
+    </p>
+    {
+      event.location && (
+        <p class="where" title={event.location}>
+          <Icon name="pin" size={16} />
+          {place(event.location)}
+        </p>
+      )
+    }
+    {event.canceled && <span class="tag">{canceledLabel}</span>}
+  </div>
+</Tag>
+
+<style>
+  .ticket {
+    --stub: var(--primary-muted);
+    --notch: var(--ticket-notch, var(--canvas));
+    position: relative;
+    display: flex;
+    height: 100%;
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    color: var(--ink);
+    text-decoration: none;
+    transition: box-shadow 160ms var(--ease);
+  }
+
+  .winter {
+    --stub: var(--season-winter);
+  }
+  .spring {
+    --stub: var(--season-spring);
+  }
+  .summer {
+    --stub: var(--season-summer);
+  }
+  .autumn {
+    --stub: var(--season-autumn);
+  }
+
+  a.ticket:hover {
+    box-shadow: var(--shadow-raised-hover);
+  }
+
+  a.ticket:hover h3 {
+    color: var(--brand-deep);
+  }
+
+  .stub {
+    position: relative;
+    flex: none;
+    width: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-2);
+    background: var(--stub);
+    color: var(--on-pop);
+    border-radius: var(--radius-card) 0 0 var(--radius-card);
+    border-right: 2px dashed color-mix(in srgb, var(--on-pop) 35%, transparent);
+    font-family: var(--font-heading);
+    text-align: center;
+  }
+
+  /* The two notches where the ticket tears. */
+  .stub::before,
+  .stub::after {
+    content: '';
+    position: absolute;
+    right: -9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--notch);
+  }
+
+  .stub::before {
+    top: -8px;
+    background: var(--ticket-notch-top, var(--notch));
+  }
+
+  .stub::after {
+    bottom: -8px;
+    background: var(--ticket-notch-bottom, var(--notch));
+  }
+
+  .day {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .month {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .body {
+    padding: var(--space-4) var(--space-5);
+    min-width: 0;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-deep);
+    margin-bottom: var(--space-1);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    transition: color 160ms var(--ease);
+  }
+
+  .when,
+  .where {
+    margin-top: var(--space-2);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .where {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--space-1);
+  }
+
+  .where :global(svg) {
+    flex: none;
+  }
+
+  .canceled h3 {
+    text-decoration: line-through;
+  }
+
+  .tag {
+    display: inline-block;
+    margin-top: var(--space-2);
+    padding: 2px 8px;
+    border-radius: var(--radius-label);
+    background: var(--coral);
+    color: var(--on-pop);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .big .stub {
+    width: 112px;
+    padding-block: var(--space-5);
+  }
+
+  .big .day {
+    font-size: 2.75rem;
+  }
+
+  .big .body {
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .big h3 {
+    font-size: 1.35rem;
+  }
+</style>

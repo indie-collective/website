@@ -30,7 +30,7 @@ const preview = (files: readonly (readonly [string, string])[]) =>
             documents.map((doc) => (
               <li>
                 <a href={doc.href} target="_blank" rel="noopener">
-                  <img src={doc.icon} alt="" width="28" height="28" />
+                  <Icon name="doc" size={20} class="doc-icon" />
                   <span>{t.resources.items[doc.key]}</span>
                   {t.resources.docLang && <span class="lang">{t.resources.docLang}</span>}
                 </a>
@@ -107,8 +107,9 @@ const preview = (files: readonly (readonly [string, string])[]) =>
     text-decoration: underline;
   }
 
-  .docs img {
+  .docs :global(.doc-icon) {
     flex: none;
+    color: var(--muted);
   }
 
   .lang {
@@ -142,7 +143,7 @@ const preview = (files: readonly (readonly [string, string])[]) =>
     display: grid;
     place-items: center;
     height: 140px;
-    padding: var(--space-4);
+    padding: var(--space-5) var(--space-7);
     background: #ffffff;
   }
 
@@ -150,9 +151,11 @@ const preview = (files: readonly (readonly [string, string])[]) =>
     background: #0d1715;
   }
 
+  /* 140 minus the padding: a percentage height doesn't resolve in a grid cell. */
   .preview img {
-    max-height: 100%;
-    max-width: 70%;
+    width: 100%;
+    height: 92px;
+    object-fit: contain;
   }
 
   .files {

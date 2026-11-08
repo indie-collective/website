@@ -21,7 +21,8 @@ const en: Dictionary = {
   },
   hero: {
     kicker: 'Indie Games & Jams · Rennes',
-    title: 'Keeping indie games alive in Rennes.',
+    title: 'Keeping indie games alive in Rennes',
+    next: 'Next event',
     lead: "Indie Collective is the association behind Rennes' game jams. We co-organise the Indie zone at Stunfest and run Community, the open directory of indie games.",
     join: 'Become a member',
     discord: 'Join the Discord',
@@ -29,7 +30,7 @@ const en: Dictionary = {
   },
   missions: {
     title: 'The association',
-    lead: 'Fuelling the community with three missions.',
+    lead: 'Fuelling the community with three missions',
     items: {
       stunfest: {
         title: 'Stunfest',
@@ -46,8 +47,9 @@ const en: Dictionary = {
     },
   },
   agenda: {
-    title: 'Upcoming events',
-    lead: "The association's next events, straight from Community.",
+    title: 'Events',
+    lead: "The association's events, straight from Community",
+    onlyOne: "That's the only event announced so far. Subscribe to the calendar to see the next ones arrive.",
     subscribe: 'Subscribe to the calendar',
     all: 'See all on Community',
     empty: 'Nothing announced yet. Subscribe to the calendar so you don’t miss the next one.',
@@ -103,7 +105,7 @@ const en: Dictionary = {
   },
   team: {
     title: 'The team',
-    lead: 'A team of winners, here to make you vibrate to the sound of video games.',
+    lead: 'A team of winners, here to make you vibrate to the sound of video games',
     groups: {
       bureau: 'Board',
       ca: 'Council',
@@ -113,7 +115,7 @@ const en: Dictionary = {
   },
   resources: {
     title: 'Media & resources',
-    lead: 'Everything you need to talk about the association.',
+    lead: 'Everything you need to talk about the association',
     docs: 'Documents',
     logos: 'Logos',
     items: {

@@ -33,8 +33,8 @@ const agenda = await getAgenda();
           const last = jam.editions?.[0];
           return (
             <li id={`jam-${jam.id}`} class:list={['jam', jam.season]}>
-              <p class="season">{t.jams.seasons[jam.season]}</p>
               <div class="card">
+                <p class="season">{t.jams.seasons[jam.season]}</p>
                 <Image
                   src={asset(jam.thumbnail)}
                   alt=""
@@ -84,7 +84,6 @@ const agenda = await getAgenda();
 </section>
 
 <style>
-  /* The year as a line: one stop per season. */
   .year {
     list-style: none;
     margin: 0;
@@ -92,67 +91,62 @@ const agenda = await getAgenda();
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-4);
-    position: relative;
-  }
-
-  .year::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 11px;
-    border-top: 2px dashed var(--rule);
   }
 
   .jam {
-    position: relative;
     display: flex;
     flex-direction: column;
   }
 
-  .season {
-    position: relative;
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding-inline-end: var(--space-3);
-    background: var(--canvas);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.95rem;
-    line-height: 24px;
-  }
-
-  /* Each season's dot: a quiet tint of the brand, getting warmer through the year. */
-  .season::before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 3px solid var(--canvas);
-    box-shadow: 0 0 0 2px var(--dot);
-    background: var(--dot);
-  }
-
   .winter {
-    --dot: var(--lilac);
+    --stub: var(--season-winter);
   }
   .spring {
-    --dot: var(--brand);
+    --stub: var(--season-spring);
   }
   .summer {
-    --dot: var(--sun);
+    --stub: var(--season-summer);
   }
   .autumn {
-    --dot: var(--coral);
+    --stub: var(--season-autumn);
+  }
+
+  /* Each jam is a ticket for its season: the stub on top, torn along the dashes. */
+  .season {
+    position: relative;
+    padding: var(--space-3) var(--space-4);
+    background: var(--stub);
+    color: var(--on-pop);
+    border-bottom: 2px dashed color-mix(in srgb, var(--on-pop) 35%, transparent);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .season::before,
+  .season::after {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--canvas);
+    z-index: 1;
+  }
+
+  .season::before {
+    left: -8px;
+  }
+
+  .season::after {
+    right: -8px;
   }
 
   .card {
     flex: 1;
     display: flex;
     flex-direction: column;
-    margin-top: var(--space-3);
     background: var(--surface);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-raised);
@@ -218,10 +212,6 @@ const agenda = await getAgenda();
   @media (max-width: 1000px) {
     .year {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: var(--space-6);
-    }
-    .year::before {
-      display: none;
     }
   }
 

@@ -27,11 +27,11 @@ export const socials = [
 ] as const;
 
 export const documents = [
-  { key: 'jammerGuide', icon: '/img/other/fire.svg', href: 'https://docs.google.com/document/d/16qKkw3lNPnx7FlVRvOLUzJwy-ayaCZC4gSOS2PUk6fk' },
-  { key: 'stunfestGuide', icon: '/img/other/indie.svg', href: 'https://docs.google.com/document/d/15qN79Ns9Oa0KycDchI9Zv1NzyN5Ih62q11dULBSl1OU' },
-  { key: 'statutes', icon: '/img/other/file.svg', href: 'https://drive.google.com/file/d/1IRQUGdonebgNEgSqgh7YOktBzWV0Q2n6' },
-  { key: 'minutes', icon: '/img/other/file2.svg', href: 'https://drive.google.com/file/d/1LU9FiIW-PR2eIlGevFP2QLVw08Zegw6k' },
-  { key: 'rules', icon: '/img/other/file3.svg', href: 'https://docs.google.com/document/d/1_9HkCRfgz7xjUfXDJbty1C82x3wezHQGmLNrUuUnYqc' },
+  { key: 'jammerGuide', href: 'https://docs.google.com/document/d/16qKkw3lNPnx7FlVRvOLUzJwy-ayaCZC4gSOS2PUk6fk' },
+  { key: 'stunfestGuide', href: 'https://docs.google.com/document/d/15qN79Ns9Oa0KycDchI9Zv1NzyN5Ih62q11dULBSl1OU' },
+  { key: 'statutes', href: 'https://drive.google.com/file/d/1IRQUGdonebgNEgSqgh7YOktBzWV0Q2n6' },
+  { key: 'minutes', href: 'https://drive.google.com/file/d/1LU9FiIW-PR2eIlGevFP2QLVw08Zegw6k' },
+  { key: 'rules', href: 'https://docs.google.com/document/d/1_9HkCRfgz7xjUfXDJbty1C82x3wezHQGmLNrUuUnYqc' },
 ] as const;
 
 // White logo PNGs only exist for the version with the name.

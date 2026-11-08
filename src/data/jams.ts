@@ -244,3 +244,6 @@ export const jams: Jam[] = [
 ];
 
 export const eventUrl = (slug: string) => `${COMMUNITY}/event/${slug}`;
+
+/** The season of the jam an event belongs to, from its name. */
+export const seasonOf = (name: string): Season | null => jams.find((jam) => jam.match.test(name))?.season ?? null;

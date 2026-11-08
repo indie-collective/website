@@ -19,7 +19,8 @@ export default {
   },
   hero: {
     kicker: 'Indie Games & Jams · Rennes',
-    title: 'On fait vivre le jeu indé à Rennes.',
+    title: 'On fait vivre le jeu indé à Rennes',
+    next: 'Prochain rendez-vous',
     lead: "Indie Collective est l'association qui organise les game jams rennaises, co-organise la zone Indie du Stunfest et tient Community, l'annuaire ouvert du jeu indépendant.",
     join: "Adhérer à l'asso",
     discord: 'Rejoindre le Discord',
@@ -27,7 +28,7 @@ export default {
   },
   missions: {
     title: "L'association",
-    lead: 'Faire carburer la communauté avec trois missions.',
+    lead: 'Faire carburer la communauté avec trois missions',
     items: {
       stunfest: {
         title: 'Stunfest',
@@ -44,8 +45,9 @@ export default {
     },
   },
   agenda: {
-    title: 'Prochains rendez-vous',
-    lead: "Les prochains évènements de l'association, tirés de Community.",
+    title: 'Agenda',
+    lead: "Les évènements de l'association, tirés de Community",
+    onlyOne: "C'est le seul rendez-vous annoncé pour l'instant. Abonnez-vous au calendrier pour voir arriver les suivants.",
     subscribe: "S'abonner au calendrier",
     all: 'Tout voir sur Community',
     empty: "Pas d'évènement annoncé pour l'instant. Abonnez-vous au calendrier pour ne pas rater le prochain.",
@@ -101,7 +103,7 @@ export default {
   },
   team: {
     title: "L'équipe",
-    lead: 'Une équipe de winners prête à vous faire vibrer sous le signe des jeux vidéo.',
+    lead: 'Une équipe de winners prête à vous faire vibrer sous le signe des jeux vidéo',
     groups: {
       bureau: 'Bureau',
       ca: "Conseil d'administration",
@@ -111,7 +113,7 @@ export default {
   },
   resources: {
     title: 'Médias & ressources',
-    lead: 'Pour pouvoir mettre en avant notre belle association.',
+    lead: 'Pour pouvoir mettre en avant notre belle association',
     docs: 'Documents',
     logos: 'Logos',
     items: {

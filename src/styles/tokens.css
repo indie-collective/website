@@ -29,6 +29,17 @@
   --lilac: #b9a7ff;
   --on-pop: #10201d;
 
+  /* The four seasons of the jam year, on ticket stubs. Dark text on all. */
+  --season-winter: #c9bcff;
+  --season-spring: #8fe3d4;
+  --season-summer: #ffd23f;
+  --season-autumn: #ff8f80;
+
+  /* Night: the hero over the Stunfest photo, whatever the theme. */
+  --night: #08100e;
+  --night-ink: #f3f6f2;
+  --night-muted: #b9cbc6;
+
   --shadow-raised: 0 1px 2px rgba(16, 32, 29, 0.06), 0 1px 1px rgba(16, 32, 29, 0.04);
   --shadow-raised-hover: 0 2px 4px rgba(16, 32, 29, 0.08), 0 4px 10px -4px rgba(16, 32, 29, 0.12);
   --shadow-lift: 0 1px 0 rgba(16, 32, 29, 0.08), 0 10px 24px -12px rgba(16, 32, 29, 0.35);
@@ -49,7 +60,9 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 72px;
-  --space-9: 112px;
+  --space-9: 96px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --content: 1120px;
   --gutter: 20px;
