@@ -38,6 +38,7 @@ export const team: Member[] = [
     photo: 'team/etienne.jpg',
     group: 'bureau',
     tagline: { fr: 'Créateur de logos depuis 1963', en: 'Logo maker since 1963', br: 'Krouer logos abaoe 1963' },
+    links: [{ kind: 'bluesky', href: 'https://bsky.app/profile/urmlefou.bsky.social' }],
   },
   {
     first: 'Nathan',
