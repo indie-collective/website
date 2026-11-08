@@ -6,7 +6,7 @@ export type Member = {
   photo: string;
   group: 'bureau' | 'ca' | 'members';
   tagline: Localized;
-  links?: { kind: 'x' | 'github' | 'bluesky'; href: string }[];
+  links?: { kind: 'github' | 'bluesky'; href: string }[];
 };
 
 export const team: Member[] = [
@@ -17,7 +17,7 @@ export const team: Member[] = [
     group: 'bureau',
     tagline: { fr: 'Japon, punk et tartiflette', en: 'Japan, punk and tartiflette', br: 'Japan, punk ha tartiflette' },
     links: [
-      { kind: 'x', href: 'https://twitter.com/YoruNoHikage' },
+      { kind: 'bluesky', href: 'https://bsky.app/profile/yorunohikage.fr' },
       { kind: 'github', href: 'https://github.com/YoruNoHikage' },
     ],
   },
@@ -28,7 +28,7 @@ export const team: Member[] = [
     group: 'bureau',
     tagline: { fr: "L'Anglais posh sauce Marmite©", en: 'The posh Englishman, Marmite© sauce', br: 'Ar saozon posh lipig Marmite©' },
     links: [
-      { kind: 'x', href: 'https://twitter.com/egleek' },
+      { kind: 'bluesky', href: 'https://bsky.app/profile/engleek.bsky.social' },
       { kind: 'github', href: 'https://github.com/engleek' },
     ],
   },
@@ -38,7 +38,6 @@ export const team: Member[] = [
     photo: 'team/etienne.jpg',
     group: 'bureau',
     tagline: { fr: 'Créateur de logos depuis 1963', en: 'Logo maker since 1963', br: 'Krouer logos abaoe 1963' },
-    links: [{ kind: 'x', href: 'https://twitter.com/urmlfou' }],
   },
   {
     first: 'Nathan',
@@ -61,7 +60,7 @@ export const team: Member[] = [
     group: 'members',
     tagline: { fr: 'Casse-c▮▮▮e officiel', en: 'Official pain in the a▮▮', br: 'Torr-penn ofisiel' },
     links: [
-      { kind: 'x', href: 'https://twitter.com/stvrsky' },
+      { kind: 'bluesky', href: 'https://bsky.app/profile/stvrsky.bsky.social' },
       { kind: 'github', href: 'https://github.com/feoche' },
     ],
   },
@@ -72,7 +71,7 @@ export const team: Member[] = [
     group: 'members',
     tagline: { fr: "L'homme au chapeau", en: 'The man in the hat', br: 'Den e dog' },
     links: [
-      { kind: 'x', href: 'https://twitter.com/Aeden_' },
+      { kind: 'bluesky', href: 'https://bsky.app/profile/aedenb.bsky.social' },
       { kind: 'github', href: 'https://github.com/Aeden-B' },
     ],
   },
@@ -83,7 +82,7 @@ export const team: Member[] = [
     group: 'members',
     tagline: { fr: 'Membre honorable', en: 'Honourable member', br: 'Ezel a enor' },
     links: [
-      { kind: 'x', href: 'https://twitter.com/IndieColle' },
+      { kind: 'bluesky', href: 'https://bsky.app/profile/indieco.xyz' },
       { kind: 'github', href: 'https://github.com/indie-collective' },
     ],
   },

@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = dictionaries[lang];
 const groups: Member['group'][] = ['bureau', 'ca', 'members'];
-const linkName = { x: 'X', github: 'GitHub', bluesky: 'Bluesky' };
+const linkName = { github: 'GitHub', bluesky: 'Bluesky' };
 ---
 
 <section id="equipe" class="section">
