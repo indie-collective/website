@@ -1,12 +1,17 @@
 ---
 import { dictionaries, type Lang } from '../i18n';
 import { DISCORD, EMAIL, HELLOASSO_WIDGET, NEWSLETTER, socials } from '../data/links';
+import { getMembers } from '../lib/helloasso';
 import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
 }
 const t = dictionaries[Astro.props.lang];
+const members = await getMembers();
+const number = new Intl.NumberFormat(t.date.locale);
+const label = (forms: { one: string; other: string }, count: number, values: Record<string, number>) =>
+  Object.entries(values).reduce((text, [key, value]) => text.replace(`{${key}}`, String(value)), count === 1 ? forms.one : forms.other);
 ---
 
 <section id="adherer" class="section band">
@@ -14,6 +19,22 @@ const t = dictionaries[Astro.props.lang];
     <div class="contact">
       <h2>{t.join.title}</h2>
       <p class="lead">{t.join.lead}</p>
+      {
+        members && (
+          <dl class="stats">
+            <div>
+              <dt>{label(t.join.members.thisYear, members.thisYear, { year: members.year })}</dt>
+              <dd>{number.format(members.thisYear)}</dd>
+            </div>
+            {members.allTime > members.thisYear && (
+              <div>
+                <dt>{label(t.join.members.allTime, members.allTime, { since: members.since })}</dt>
+                <dd>{number.format(members.allTime)}</dd>
+              </div>
+            )}
+          </dl>
+        )
+      }
 
       <h3>{t.join.contact}</h3>
       <div class="actions">
@@ -67,6 +88,35 @@ const t = dictionaries[Astro.props.lang];
     margin-top: var(--space-3);
     color: var(--muted);
     max-width: 44ch;
+  }
+
+  /* The figure first, its label under it. */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5) var(--space-7);
+    margin: var(--space-6) 0 0;
+  }
+
+  .stats div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .stats dd {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--brand-deep);
+  }
+
+  .stats dt {
+    margin-top: var(--space-2);
+    color: var(--muted);
+    font-size: 0.95rem;
   }
 
   h3 {

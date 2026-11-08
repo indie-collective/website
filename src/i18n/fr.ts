@@ -140,6 +140,10 @@ export default {
     title: "Adhérez à l'asso",
     lead: "L'adhésion soutient les jams et l'accueil des indés au Stunfest. Elle se fait en ligne via HelloAsso.",
     widgetTitle: "Formulaire d'adhésion HelloAsso",
+    members: {
+      thisYear: { one: 'adhérent·e en {year}', other: 'adhérent·es en {year}' },
+      allTime: { one: 'personne a adhéré depuis {since}', other: 'personnes ont adhéré depuis {since}' },
+    },
     contact: 'Contactez-nous',
     discord: 'Rejoignez-nous sur Discord',
     newsletter: 'Newsletter annuelle',

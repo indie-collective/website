@@ -44,6 +44,12 @@ Each jam's and Stunfest's past editions (`editions` in `src/data/jams.ts`) link 
 
 The podcast's latest episodes are read at build time from its RSS feed.
 
+### Member counts come from HelloAsso
+
+The "Adhérez à l'asso" section shows how many people joined this calendar year, and how many have joined since the first membership. They're counted at build time from the HelloAsso API (`src/lib/helloasso.ts`), as distinct people among the memberships paid through the membership form; only the two numbers reach the page.
+
+This needs a HelloAsso API client with access to transactions: create one in the HelloAsso back office, then add its ID and secret as the repository secrets `HELLOASSO_CLIENT_ID` and `HELLOASSO_CLIENT_SECRET` (Settings → Secrets and variables → Actions). Locally, copy `.env.example` to `.env` and fill them in. Without them, or if HelloAsso doesn't answer, the counts are simply not shown.
+
 ### Deploying
 
 The site deploys through GitHub Actions (`.github/workflows/deploy.yml`). For now the workflow only runs by hand, from the Actions tab, so the old site stays live until the new one is approved. To go live: in the repository's settings, set Pages' source to **GitHub Actions**, and restore the push and daily triggers noted in the workflow.

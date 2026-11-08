@@ -142,6 +142,10 @@ const en: Dictionary = {
     title: 'Join the association',
     lead: 'Membership supports the jams and the welcome for indie developers at Stunfest. Join online through HelloAsso.',
     widgetTitle: 'HelloAsso membership form',
+    members: {
+      thisYear: { one: 'member in {year}', other: 'members in {year}' },
+      allTime: { one: 'person has joined since {since}', other: 'people have joined since {since}' },
+    },
     contact: 'Get in touch',
     discord: 'Join us on Discord',
     newsletter: 'Yearly newsletter (in French)',
